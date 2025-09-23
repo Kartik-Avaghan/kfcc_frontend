@@ -50,8 +50,8 @@ function RegisterViewDetails({ detail, onClose }) {
           <p><span className="font-semibold">Category:</span> {detail.category}</p>
           <p><span className="font-semibold">Accepted Date:</span> { new Date (detail.acceptedDate).toLocaleDateString("en-In")}</p>
 
-          <div className="flex  justify-around items-center  mt-8">
-            <button className="border border-green-500 rounded-2xl text-white bg-green-500 px-8 py-1   hover:bg-white hover:text-green-800 hover:border-green-500">Accept</button>
+            <div className="flex  justify-around items-center  mt-8">
+            <button className="border border-green-500  rounded-2xl text-white bg-green-500 px-8 py-1   hover:bg-white hover:text-green-800 hover:border-green-500">Accept</button>
             <button className="border border-red-500 rounded-2xl text-white bg-red-500 px-8 py-1  hover:bg-white hover:text-red-800 hover:border-red-5001">Reject</button>
           </div>
         </div>

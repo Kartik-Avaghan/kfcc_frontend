@@ -36,7 +36,7 @@ function TitleRegistration() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:8080/titleRegistration`, {
+    fetch(`http://localhost:8080/Application`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -336,6 +336,86 @@ function TitleRegistration() {
           />
         </div>
 
+
+
+        {/* <div>
+          <input type="radio" className="mr-2" required />Kalayan Nidhi
+        </div> */}
+
+
+       
+
+
+
+
+
+{/* Benefits Card */}
+<div className="border rounded-lg p-6 mt-6 bg-gray-50 shadow-sm">
+  {/* Section Title */}
+  <h3 className="text-xl font-bold text-blue-950 mb-4">Kalyan Nidhi</h3>
+
+  {/* Radio Buttons */}
+  <div className="mb-6">
+    <p className="block mb-2 font-medium text-gray-700">Do you want to avail these benefits?</p>
+    <div className="flex items-center space-x-6">
+      <label className="flex items-center cursor-pointer">
+        <input
+          type="radio"
+          name="benefits"
+          value="yes"
+          checked={formData.benefits === "yes"}
+          onChange={handleChange}
+          className="mr-2"
+        />
+        Yes
+      </label>
+      <label className="flex items-center cursor-pointer">
+        <input
+          type="radio"
+          name="benefits"
+          value="no"
+          checked={formData.benefits === "no"}
+          onChange={handleChange}
+          className="mr-2"
+        />
+        No
+      </label>
+    </div>
+  </div>
+
+  {/* Benefits List */}
+  <h4 className="text-lg font-semibold text-gray-600 mb-3">Benefits</h4>
+  <ul className="space-y-2 text-gray-600">
+    <li className="flex items-center">
+      {/* <span className="text-green-600 mr-2">✔</span> */}
+      ₹4.5 Lakh medical insurance claim
+    </li>
+    <li className="flex items-center">
+      {/* <span className="text-green-600 mr-2">✔</span> */}
+      ₹4 Lakh will be sent to member's home
+    </li>
+    <li className="flex items-center">
+      {/* <span className="text-green-600 mr-2">✔</span> */}
+      Regular members must pay fees of ₹50,000+
+    </li>
+  </ul>
+
+  {/* Note */}
+  <p className="mt-4 text-sm text-gray-500 italic">
+    *Terms & conditions apply. Benefits are applicable only to active members.
+  </p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
         {/* Submit Button */}
         <div className="flex justify-center items-center">
           <button
@@ -345,6 +425,10 @@ function TitleRegistration() {
             Submit
           </button>
         </div>
+
+
+
+        
       </form>
     </div>
   );
