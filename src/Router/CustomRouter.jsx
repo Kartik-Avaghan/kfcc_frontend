@@ -21,7 +21,7 @@ function CustomRouter() {
 
           {/* Staff */}
             <Route path='/' element={<StaffLoginPage/>}/>
-            <Route path='/dashboard' element={<DashBoardPage/>}/>
+            <Route path='/staffdashboard' element={<DashBoardPage/>}/>
             <Route path='/staffregistrationdetails' element={<RegisterViewDetailsPage/>}/>
 
 

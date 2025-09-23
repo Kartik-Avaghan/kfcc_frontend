@@ -6,7 +6,7 @@ function DashBoard() {
   const [selectedDetail, setSelectedDetail] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/titleRegistration", {
+    fetch("http://localhost:8080/Application/pending?role=STAFF", {
       method: "GET",
       headers: {
         "Authorization": localStorage.getItem("token"),
@@ -18,7 +18,12 @@ function DashBoard() {
       }
       return response.json();
     })
-    .then((data) => setRegisterDetails(data))
+    .then((data) => {
+      // data is an array of approvals
+      // if you want just the application objects:
+      const applications = data.map(item => item.applicationID);
+      setRegisterDetails(applications);
+    })
     .catch((error) => console.log("Fetching Error", error));
   }, []);
 
