@@ -11,6 +11,8 @@ import OMDashboard from '../pages/O&M/OMDashboard'
 import OMRegistrationViewDetails from '../pages/O&M/OMRegistrationViewDetails'
 import ProducerDashboard from '../pages/Producers/ProducerDashboard'
 import ProducerRegistrationViewDetails from '../pages/Producers/ProducerRegistrationViewDetails'
+import RCDashboard from '../pages/RCMember/RCDashboard'
+import RCRegistrationViewDetails from '../pages/RCMember/RCRegistrationViewDetails'
 
 
 function CustomRouter() {
@@ -38,6 +40,14 @@ function CustomRouter() {
                <Route path='/producerdashboard' element={<ProducerDashboard/>}/>
                <Route path='/producerregistrationdetails' element={<ProducerRegistrationViewDetails/>}/>
               <Route path='/titleregistration' element={<TitleRegistrationPage/>}/>
+
+
+
+
+
+              {/* RC Members */}
+              <Route path='/rcdashboard' element={<RCDashboard/>}/>
+              <Route path='/rcregistrationdetails' element={<RCRegistrationViewDetails/>}/>
 
         </Routes>
     </div>
