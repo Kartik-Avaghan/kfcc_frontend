@@ -25,7 +25,7 @@ function DashBoard() {
       setRegisterDetails(applications);
     })
     .catch((error) => console.log("Fetching Error", error));
-  }, []);
+  }, [selectedDetail]);
 
   return (
     <div className="flex justify-center items-center h-full p-10">

@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function RegisterViewDetails({ detail, onClose }) {
   if (!detail) return null;
   // if no detail selected, don't render anything
+
+
+    const navigate=useNavigate();
 
   function approval(applicationId,approve){
 
@@ -27,8 +31,9 @@ function RegisterViewDetails({ detail, onClose }) {
       return response.json();
     })
     .then((data) => {
-      
+      onClose()
     })
+    
     .catch((error) => console.log("Fetching Error", error));
   }
 

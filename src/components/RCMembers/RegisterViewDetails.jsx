@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function RegisterViewDetails({ detail, onClose }) {
   if (!detail) return null;
-  // if no detail selected, don't render anything
+  // if no detail selected, don't render anything4
+
+
+    const navigate=useNavigate();
 
   function approval(applicationId,approve){
 
@@ -13,7 +17,7 @@ function RegisterViewDetails({ detail, onClose }) {
         "Content-Type" : "Application/json"
       },
       body:JSON.stringify({
-        "role":"MEMBER",
+        "role":"MEMBERS",
         "approved_by":"kartik",
         "approve":approve,
         "comments":"good"
@@ -24,11 +28,16 @@ function RegisterViewDetails({ detail, onClose }) {
       if (!response.ok) {
         throw new Error("Response was not ok");
       }
+      if(response.ok){
+onClose();
+      }
+      
       return response.json();
     })
     .then((data) => {
       
     })
+    
     .catch((error) => console.log("Fetching Error", error));
   }
 

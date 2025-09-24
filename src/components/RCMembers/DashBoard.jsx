@@ -6,7 +6,7 @@ function DashBoard() {
   const [selectedDetail, setSelectedDetail] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/titleApplication/pending?userrole=MEMBER`, {
+    fetch(`http://localhost:8080/titleApplication/pending?userrole=MEMBERS`, {
       method: "GET",
       headers: {
         "Authorization": localStorage.getItem("token"),
@@ -25,7 +25,7 @@ function DashBoard() {
       setRegisterDetails(applications);
     })
     .catch((error) => console.log("Fetching Error", error));
-  }, []);
+  }, [selectedDetail]);
 
   return (
     <div className="flex justify-center items-center h-full p-10">
