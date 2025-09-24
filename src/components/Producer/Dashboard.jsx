@@ -34,6 +34,8 @@ function DashBoard() {
           All Registered Details
         </h1>
 
+        
+
         {/* Grid of Cards */}
         <div className="grid grid-cols-1 gap-6 mt-6 w-full px-2 sm:px-4">
           {registerDetails.map((detail) => (
