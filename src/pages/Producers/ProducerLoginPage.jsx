@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo from "../../assets/logo.jpeg"
 
 function ProducerLoginPage() {
- const [staffLogin, setStaffLogin] = useState({
+ const [producerLogin, setProducerLogin] = useState({
     email: "",
     password: ""
   });
@@ -11,7 +12,7 @@ function ProducerLoginPage() {
 
   const handleChanges = (e) => {
     const { name, value } = e.target;
-    setStaffLogin((preData) => ({
+    setProducerLogin((preData) => ({
       ...preData,
       [name]: value,
     }));
@@ -25,7 +26,7 @@ function ProducerLoginPage() {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(staffLogin),
+      body: JSON.stringify(producerLogin),
     })
       .then((response) => {
         if (!response.ok) {
@@ -40,7 +41,7 @@ function ProducerLoginPage() {
         localStorage.setItem("token", token);
 
         // clear form
-        setStaffLogin({
+        setProducerLogin({
           email: "",
           password: "",
         });
@@ -50,13 +51,14 @@ function ProducerLoginPage() {
   };
 
   return (
-    <div className="flex justify-center items-center px-4 min-h-screen">
+    <div className="flex flex-col justify-center items-center px-4 min-h-screen">
+        <img src={logo} alt="logo" className='rounded-full mb-10 size-24' />
       <form
         onSubmit={handleSubmit}
         className="bg-white border shadow-md rounded-lg p-6 w-full max-w-sm"
       >
         <h2 className="text-2xl font-semibold text-center mb-6 text-blue-950">
-          Staff Login
+          Producer Login
         </h2>
 
         <div className="flex flex-col space-y-4">
@@ -64,7 +66,7 @@ function ProducerLoginPage() {
             type="email"
             placeholder="Email"
             name="email"
-            value={staffLogin.email}
+            value={producerLogin.email}
             onChange={handleChanges}
             className="border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-300"
             required
@@ -73,7 +75,7 @@ function ProducerLoginPage() {
             type="password"
             placeholder="Password"
             name="password"
-            value={staffLogin.password}
+            value={producerLogin.password}
             onChange={handleChanges}
             className="border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-300"
             required

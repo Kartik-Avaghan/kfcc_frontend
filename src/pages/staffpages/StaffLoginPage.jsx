@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo from "../../assets/logo.jpeg"
 
 function StaffLoginPage() {
   const [staffLogin, setStaffLogin] = useState({
@@ -50,7 +51,8 @@ function StaffLoginPage() {
   };
 
   return (
-    <div className="flex justify-center items-center px-4 min-h-screen">
+    <div className="flex flex-col justify-center items-center px-4 min-h-screen">
+      <img src={logo} alt="logo" className='size-24 mb-10 rounded-full'/>
       <form
         onSubmit={handleSubmit}
         className="bg-white border shadow-md rounded-lg p-6 w-full max-w-sm"

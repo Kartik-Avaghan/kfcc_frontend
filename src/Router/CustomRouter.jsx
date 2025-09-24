@@ -13,6 +13,7 @@ import ProducerDashboard from '../pages/Producers/ProducerDashboard'
 import ProducerRegistrationViewDetails from '../pages/Producers/ProducerRegistrationViewDetails'
 import RCDashboard from '../pages/RCMember/RCDashboard'
 import RCRegistrationViewDetails from '../pages/RCMember/RCRegistrationViewDetails'
+import ProducerLoginPage from '../pages/Producers/ProducerLoginPage'
 
 
 function CustomRouter() {
@@ -37,6 +38,7 @@ function CustomRouter() {
               
 
               {/* Producer */}
+              <Route path='/producerlogin' element={<ProducerLoginPage/>}/>
                <Route path='/producerdashboard' element={<ProducerDashboard/>}/>
                <Route path='/producerregistrationdetails' element={<ProducerRegistrationViewDetails/>}/>
               <Route path='/titleregistration' element={<TitleRegistrationPage/>}/>
