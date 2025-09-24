@@ -76,7 +76,7 @@ function TitleRegistration() {
           acceptedDate: "",
         });
 
-        navigate("/dashboard")
+        navigate("/producerdashboard")
       })
       .catch((error) => console.log("Fetching Error", error));
   };
@@ -421,7 +421,7 @@ function TitleRegistration() {
 
         {/* Submit Button */}
         <div className="flex justify-center items-center">
-           <Link to={"/producerdashboard"}>
+           
           <button
             type="submit"
             className="w-80 mt-4 border border-blue-950 bg-blue-950 text-white p-3 rounded-lg hover:bg-white hover:text-blue-950 transition"
@@ -429,7 +429,7 @@ function TitleRegistration() {
            
             Submit
           </button>
-          </Link>
+         
         </div>
 
 
