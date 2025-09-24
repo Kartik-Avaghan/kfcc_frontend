@@ -6,7 +6,7 @@ function RegisterViewDetails({ detail, onClose }) {
 
   function approval(applicationId,approve){
 
-    fetch(`http://localhost:8080/Application/${applicationId}/approve`, {
+    fetch(`http://localhost:8080/titleApplication/${applicationId}/approve`, {
       method: "POST",
       headers: {
         "Authorization": localStorage.getItem("token"),

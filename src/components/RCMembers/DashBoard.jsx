@@ -6,7 +6,7 @@ function DashBoard() {
   const [selectedDetail, setSelectedDetail] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/Application/pending`, {
+    fetch(`http://localhost:8080/titleApplication/pending?userrole=MEMBER`, {
       method: "GET",
       headers: {
         "Authorization": localStorage.getItem("token"),

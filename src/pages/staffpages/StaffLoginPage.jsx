@@ -44,7 +44,7 @@ function StaffLoginPage() {
           email: "",
           password: "",
         });
-        navigate("/dashboard")
+        navigate("/staffdashboard")
       })
       .catch((error) => console.log("Fetching error", error));
   };

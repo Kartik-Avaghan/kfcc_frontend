@@ -25,7 +25,7 @@ function Nav() {
           </li>
           <li>
   <Link
-    to="/logout"
+    to="/"
     className="block border border-white rounded-2xl text-center py-1 px-0 hover:bg-white hover:text-blue-950 transition-colors"
   >
     Logout

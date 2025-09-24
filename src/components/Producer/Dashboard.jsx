@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import RegisterViewDetails from "./RegisterViewDetails";
 
-
 function DashBoard() {
   const [registerDetails, setRegisterDetails] = useState([]);
   const [selectedDetail, setSelectedDetail] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/Application/pending", {
+    fetch(`http://localhost:8080/titleApplication/pending?userrole=PRODUCER`, {
       method: "GET",
       headers: {
         "Authorization": localStorage.getItem("token"),
@@ -19,14 +18,17 @@ function DashBoard() {
       }
       return response.json();
     })
-    .then((data) => setRegisterDetails(data))
+    .then((data) => {
+      // data is an array of approvals
+      // if you want just the application objects:
+      const applications = data.map(item => item.application);
+      setRegisterDetails(applications);
+    })
     .catch((error) => console.log("Fetching Error", error));
   }, []);
 
   return (
-    
     <div className="flex justify-center items-center h-full p-10">
-        
       <div className="flex flex-col justify-center items-center w-full">
         <h1 className="text-2xl text-blue-950 font-semibold">
           All Registered Details
@@ -77,11 +79,7 @@ function DashBoard() {
         detail={selectedDetail}
         onClose={() => setSelectedDetail(null)}
       />
-
-      
     </div>
-    
-
   );
 }
 

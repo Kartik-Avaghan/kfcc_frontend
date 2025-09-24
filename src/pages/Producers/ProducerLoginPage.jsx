@@ -44,7 +44,7 @@ function ProducerLoginPage() {
           email: "",
           password: "",
         });
-        navigate("/dashboard")
+        navigate("/producerdashboard")
       })
       .catch((error) => console.log("Fetching error", error));
   };

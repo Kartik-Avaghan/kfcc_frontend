@@ -36,7 +36,7 @@ function TitleRegistration() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:8080/Application`, {
+    fetch(`http://localhost:8080/titleApplication`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
