@@ -4,6 +4,8 @@ import RegisterViewDetails from '../../components/Producer/RegisterViewDetails'
 function ProducerRegistrationViewDetails() {
   return (
     <div>
+
+      
         <RegisterViewDetails/>
     </div>
   )

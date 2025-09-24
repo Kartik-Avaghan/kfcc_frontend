@@ -21,7 +21,7 @@ function ProducerLoginPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:8080/auth/member`, {
+    fetch(`http://localhost:8080/auth/producer`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

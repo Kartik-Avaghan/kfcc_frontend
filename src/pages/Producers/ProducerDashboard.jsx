@@ -6,7 +6,7 @@ function ProducerDashboard() {
   return (
     <div className='flex h-screen'>
         <Nav/>
-        <div className='flex-1 p-6 overflow-y-auto'> <DashBoard/></div>
+        <div className='flex-1 p-6  overflow-y-auto'> <DashBoard/></div>
         
     </div>
   )

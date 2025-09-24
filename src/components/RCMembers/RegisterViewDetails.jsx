@@ -93,6 +93,7 @@ onClose();
           <div className="flex  justify-around items-center  mt-8">
             <button onClick={()=>approval(detail.id, true)} className="border border-green-500  rounded-2xl text-white bg-green-500 px-8 py-1   hover:bg-white hover:text-green-800 hover:border-green-500">Accept</button>
             <button onClick={()=>approval(detail.id, false)}  className="border border-red-500 rounded-2xl text-white bg-red-500 px-8 py-1  hover:bg-white hover:text-red-800 hover:border-red-5001">Reject</button>
+                      <button onClick={()=>approval(detail.id, false)}  className="border border-yellow-500 rounded-2xl text-white bg-yellow-500 px-8 py-1  hover:bg-white hover:text-yellow-800 hover:border-yellow-500">Remark</button>
           </div>
         </div>
       </div>

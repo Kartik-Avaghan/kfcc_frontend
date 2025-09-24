@@ -48,8 +48,8 @@ function CustomRouter() {
 
 
               {/* RC Members */}
-              <Route path='/rcdashboard' element={<RCDashboard/>}/>
-              <Route path='/rcregistrationdetails' element={<RCRegistrationViewDetails/>}/>
+              <Route path='/ecdashboard' element={<RCDashboard/>}/>
+              <Route path='/ecregistrationdetails' element={<RCRegistrationViewDetails/>}/>
 
         </Routes>
     </div>

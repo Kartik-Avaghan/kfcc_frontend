@@ -50,6 +50,7 @@ function TitleRegistration() {
         if (!response.ok) {
           throw new Error("Response was not ok");
         }
+         navigate("/producerdashboard")
         return response.json();
       })
       .then((data) => {
@@ -58,7 +59,7 @@ function TitleRegistration() {
         // Reset form
         setFormData({
           name: "",
-          date: "",
+          date: new Date.now(),
           address: "",
           title: "",
           firstFilm: "",
@@ -76,23 +77,23 @@ function TitleRegistration() {
           acceptedDate: "",
         });
 
-        navigate("/producerdashboard")
+       
       })
       .catch((error) => console.log("Fetching Error", error));
   };
 
   return (
-    <div className="flex justify-center py-10 bg-gray-100">
+    <div className="flex justify-center py-10 ">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg space-y-4"
       >
         <h2 className="text-3xl font-semibold text-center mb-6 text-blue-950">
-          Registration Details
+         Title Registration Details
         </h2>
 
         {/* Name & Date */}
-        <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 w-full">
+        {/* <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 w-full">
           <div className="flex flex-col w-full md:w-1/2">
             <label className="mb-1 font-medium text-gray-700">Name</label>
             <input
@@ -120,7 +121,7 @@ function TitleRegistration() {
         </div>
 
         {/* Address */}
-        <div className="flex flex-col w-full">
+        {/* <div className="flex flex-col w-full">
           <label className="mb-1 font-medium text-gray-700">Address</label>
           <input
             type="text"
@@ -131,7 +132,7 @@ function TitleRegistration() {
             className="border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-300"
             required
           />
-        </div>
+        </div>  */}
 
         {/* Title & First Film */}
         <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 w-full">
@@ -168,7 +169,7 @@ function TitleRegistration() {
 
         {/* Institution & Member ID */}
         <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 w-full">
-          <div className="flex flex-col w-full md:w-1/2">
+          <div className="flex flex-col w-full ">
             <label className="mb-1 font-medium text-gray-700">
               Institution Name
             </label>
@@ -183,7 +184,7 @@ function TitleRegistration() {
             />
           </div>
 
-          <div className="flex flex-col w-full md:w-1/2">
+          {/* <div className="flex flex-col w-full md:w-1/2">
             <label className="mb-1 font-medium text-gray-700">
               Membership Number
             </label>
@@ -196,7 +197,7 @@ function TitleRegistration() {
               className="border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-300"
               required
             />
-          </div>
+          </div> */}
         </div>
 
         {/* Producer & Language */}
@@ -228,7 +229,15 @@ function TitleRegistration() {
           </div>
         </div>
 
-        {/* Previously Registered */}
+        
+
+
+        {
+          formData.firstFilm == "false" && <div>
+
+
+
+            {/* Previously Registered */}
         <div className="flex flex-col w-full">
           <label className="mb-1 font-medium text-gray-700">
             Previously Registered?
@@ -245,7 +254,8 @@ function TitleRegistration() {
           </select>
         </div>
 
-        {/* Previously Registered Details */}
+
+ {/* Previously Registered Details */}
         <div className="flex flex-col w-full">
           <label className="mb-1 font-medium text-gray-700">
             Previously Registered Details
@@ -259,6 +269,14 @@ function TitleRegistration() {
             className="border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-300"
           />
         </div>
+          </div>
+
+
+
+
+        }
+
+       
 
         {/* Films By Institutes */}
         <div className="flex flex-col w-full">
@@ -290,13 +308,13 @@ function TitleRegistration() {
           </div>
 
           <div className="flex flex-col w-full md:w-1/3">
-            <label className="mb-1 font-medium text-gray-700">Singer</label>
+            <label className="mb-1 font-medium text-gray-700">Music Director</label>
             <input
               type="text"
               name="singer"
               value={formData.singer}
               onChange={handleChange}
-              placeholder="Singer"
+              placeholder="Music Director"
               className="border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-300"
             />
           </div>
@@ -328,7 +346,7 @@ function TitleRegistration() {
         </div>
 
         {/* Accepted Date */}
-        <div className="flex flex-col w-full">
+        {/* <div className="flex flex-col w-full">
           <label className="mb-1 font-medium text-gray-700">Accepted Date</label>
           <input
             type="date"
@@ -337,7 +355,7 @@ function TitleRegistration() {
             onChange={handleChange}
             className="border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-300"
           />
-        </div>
+        </div> */}
 
 
 
@@ -352,62 +370,6 @@ function TitleRegistration() {
 
 
 
-{/* Benefits Card */}
-<div className="border rounded-lg p-6 mt-6 bg-gray-50 shadow-sm">
-  {/* Section Title */}
-  <h3 className="text-xl font-bold text-blue-950 mb-4">Kalyan Nidhi</h3>
-
-  {/* Radio Buttons */}
-  <div className="mb-6">
-    <p className="block mb-2 font-medium text-gray-700">Do you want to avail these benefits?</p>
-    <div className="flex items-center space-x-6">
-      <label className="flex items-center cursor-pointer">
-        <input
-          type="radio"
-          name="benefits"
-          value="yes"
-          checked={formData.benefits === "yes"}
-          onChange={handleChange}
-          className="mr-2"
-        />
-        Yes
-      </label>
-      <label className="flex items-center cursor-pointer">
-        <input
-          type="radio"
-          name="benefits"
-          value="no"
-          checked={formData.benefits === "no"}
-          onChange={handleChange}
-          className="mr-2"
-        />
-        No
-      </label>
-    </div>
-  </div>
-
-  {/* Benefits List */}
-  <h4 className="text-lg font-semibold text-gray-600 mb-3">Benefits</h4>
-  <ul className="space-y-2 text-gray-600">
-    <li className="flex items-center">
-      {/* <span className="text-green-600 mr-2">✔</span> */}
-      ₹4.5 Lakh medical insurance claim
-    </li>
-    <li className="flex items-center">
-      {/* <span className="text-green-600 mr-2">✔</span> */}
-      ₹4 Lakh will be sent to member's home
-    </li>
-    <li className="flex items-center">
-      {/* <span className="text-green-600 mr-2">✔</span> */}
-      Regular members must pay fees of ₹50,000+
-    </li>
-  </ul>
-
-  {/* Note */}
-  <p className="mt-4 text-sm text-gray-500 italic">
-    *Terms & conditions apply. Benefits are applicable only to active members.
-  </p>
-</div>
 
 
 

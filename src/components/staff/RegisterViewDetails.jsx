@@ -71,13 +71,13 @@ const navigate=useNavigate();
         </h2>
 
         <div className="space-y-2 text-gray-800 text-sm sm:text-base">
-          <p><span className="font-semibold">Name:</span> {detail.name}</p>
+          <p><span className="font-semibold">Name:</span> Kartik {detail.name}</p>
           <p><span className="font-semibold">Date:</span> {new Date(detail.date).toLocaleDateString("en-In")}</p>
-          <p><span className="font-semibold">Address:</span> {detail.address}</p>
+          <p><span className="font-semibold">Address:</span> Shankar Matha {detail.address}</p>
           <p><span className="font-semibold">Film Title:</span> {detail.title}</p>
           <p><span className="font-semibold">First Film:</span> {detail.firstFilm ? "Yes" : "No"}</p>
           <p><span className="font-semibold">Institution:</span> {detail.institution}</p>
-          <p><span className="font-semibold">Member ID:</span> {detail.memberId}</p>
+          <p><span className="font-semibold">Member ID:</span> 102345 {detail.memberId}</p>
           <p><span className="font-semibold">Producer:</span> {detail.producer}</p>
           <p><span className="font-semibold">Language:</span> {detail.language}</p>
           <p><span className="font-semibold">Previously Registered:</span> {detail.previouslyRegistered ? "Yes" : "No"}</p>
@@ -91,7 +91,8 @@ const navigate=useNavigate();
 
           <div className="flex  justify-around items-center  mt-8">
             <button onClick={()=>approval(detail.id, true)} className="border border-green-500  rounded-2xl text-white bg-green-500 px-8 py-1   hover:bg-white hover:text-green-800 hover:border-green-500">Accept</button>
-            <button onClick={()=>approval(detail.id, false)}  className="border border-red-500 rounded-2xl text-white bg-red-500 px-8 py-1  hover:bg-white hover:text-red-800 hover:border-red-5001">Reject</button>
+            <button onClick={()=>approval(detail.id, false)}  className="border border-red-500 rounded-2xl text-white bg-red-500 px-8 py-1  hover:bg-white hover:text-red-800 hover:border-red-500">Reject</button>
+            <button onClick={()=>approval(detail.id, false)}  className="border border-yellow-500 rounded-2xl text-white bg-yellow-500 px-8 py-1  hover:bg-white hover:text-yellow-800 hover:border-yellow-500">Remark</button>
           </div>
         </div>
       </div>
