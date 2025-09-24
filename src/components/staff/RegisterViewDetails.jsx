@@ -13,8 +13,7 @@ function RegisterViewDetails({ detail, onClose }) {
         "Content-Type" : "Application/json"
       },
       body:JSON.stringify({
-        "role":"STAFF",
-        "approved_by":"kartik",
+       
         "approve":approve,
         "comments":"good"
       })

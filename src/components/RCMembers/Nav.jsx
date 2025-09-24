@@ -8,13 +8,10 @@ function Nav() {
       <div className="w-62 bg-blue-950 text-white flex flex-col  p-6">
         <h1 className="text-2xl font-bold mb-10 ">KFCC</h1>
         <ul className="space-y-6 text-lg ">
-          <li>
-            <Link
-              to="/titleregistration"
-              className="hover:text-gray-300 transition-colors"
-            >
+          <li className="hover:text-gray-300 transition-colors">
+            
               Title Registration
-            </Link>
+            
           </li>
           <li>
             <Link

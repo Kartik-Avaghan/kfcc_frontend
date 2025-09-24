@@ -1,7 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
 function RegisterViewDetails({ detail, onClose }) {
-  if (!detail) return null; // if no detail selected, don't render anything
+  if (!detail) return null;
+  // if no detail selected, don't render anything
+
+  function approval(applicationId,approve){
+
+    fetch(`http://localhost:8080/titleApplication/${applicationId}/approve`, {
+      method: "POST",
+      headers: {
+        "Authorization": localStorage.getItem("token"),
+        "Content-Type" : "Application/json"
+      },
+      body:JSON.stringify({
+      
+        "approve":approve,
+        "comments":"good"
+      })
+
+    })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      
+    })
+    .catch((error) => console.log("Fetching Error", error));
+  }
+
+
 
   return (
     <div
@@ -50,9 +80,9 @@ function RegisterViewDetails({ detail, onClose }) {
           <p><span className="font-semibold">Category:</span> {detail.category}</p>
           <p><span className="font-semibold">Accepted Date:</span> { new Date (detail.acceptedDate).toLocaleDateString("en-In")}</p>
 
-            <div className="flex  justify-around items-center  mt-8">
-            <button className="border border-green-500  rounded-2xl text-white bg-green-500 px-8 py-1   hover:bg-white hover:text-green-800 hover:border-green-500">Accept</button>
-            <button className="border border-red-500 rounded-2xl text-white bg-red-500 px-8 py-1  hover:bg-white hover:text-red-800 hover:border-red-5001">Reject</button>
+          <div className="flex  justify-around items-center  mt-8">
+            <button onClick={()=>approval(detail.id, true)} className="border border-green-500  rounded-2xl text-white bg-green-500 px-8 py-1   hover:bg-white hover:text-green-800 hover:border-green-500">Accept</button>
+            <button onClick={()=>approval(detail.id, false)}  className="border border-red-500 rounded-2xl text-white bg-red-500 px-8 py-1  hover:bg-white hover:text-red-800 hover:border-red-5001">Reject</button>
           </div>
         </div>
       </div>
