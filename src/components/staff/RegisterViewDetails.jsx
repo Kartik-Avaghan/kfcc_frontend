@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function RegisterViewDetails({ detail, onClose }) {
+
+const navigate=useNavigate();
+
   if (!detail) return null;
   // if no detail selected, don't render anything
 
   function approval(applicationId,approve){
 
-    fetch(`http://localhost:8080/Application/${applicationId}/approve`, {
+    fetch(`http://localhost:8080/titleApplication/${applicationId}/approve`, {
       method: "POST",
       headers: {
         "Authorization": localStorage.getItem("token"),
@@ -24,11 +28,15 @@ function RegisterViewDetails({ detail, onClose }) {
       if (!response.ok) {
         throw new Error("Response was not ok");
       }
+      if(response.ok){
+         onClose();
+      }
       return response.json();
     })
     .then((data) => {
-      
+     
     })
+    
     .catch((error) => console.log("Fetching Error", error));
   }
 

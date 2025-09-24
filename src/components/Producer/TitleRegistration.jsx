@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function TitleRegistration() {
   const [formData, setFormData] = useState({
@@ -420,12 +421,15 @@ function TitleRegistration() {
 
         {/* Submit Button */}
         <div className="flex justify-center items-center">
+           <Link to={"/producerdashboard"}>
           <button
             type="submit"
             className="w-80 mt-4 border border-blue-950 bg-blue-950 text-white p-3 rounded-lg hover:bg-white hover:text-blue-950 transition"
           >
+           
             Submit
           </button>
+          </Link>
         </div>
 
 
