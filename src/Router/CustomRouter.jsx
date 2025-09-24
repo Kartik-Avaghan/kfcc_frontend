@@ -39,8 +39,8 @@ function CustomRouter() {
 
               {/* Producer */}
               <Route path='/producerlogin' element={<ProducerLoginPage/>}/>
-               <Route path='/producerdashboard' element={<ProducerDashboard/>}/>
-               <Route path='/producerregistrationdetails' element={<ProducerRegistrationViewDetails/>}/>
+              <Route path='/producerdashboard' element={<ProducerDashboard/>}/>
+              <Route path='/producerregistrationdetails' element={<ProducerRegistrationViewDetails/>}/>
               <Route path='/titleregistration' element={<TitleRegistrationPage/>}/>
 
 
