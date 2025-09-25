@@ -10,7 +10,7 @@ function TitleRegistration() {
     firstFilm: "",
     institution: "",
     memberId: "102345",
-    gst_no:"",
+    gstNo:"",
     producer: "",
     language: "",
     previouslyRegistered: "",
@@ -65,7 +65,7 @@ function TitleRegistration() {
           firstFilm: "",
           institution: "",
           // memberId: "",
-          gst_no:"",
+          gstNo:"",
           producer: "",
           language: "",
           previouslyRegistered: "",
@@ -191,8 +191,8 @@ function TitleRegistration() {
             </label>
             <input
               type="number"
-              name="gst_no"
-              value={formData.gst_no}
+              name="gstNo"
+              value={formData.gstNo}
               onChange={handleChange}
               placeholder="GST Number"
               className="border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-300"

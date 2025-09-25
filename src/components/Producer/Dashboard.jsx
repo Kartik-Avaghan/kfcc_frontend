@@ -38,7 +38,7 @@ function DashBoard() {
 
 
   return (
-    <div className="flex justify-center items-center h-full p-20">
+    <div className="flex justify-center items-center  p-20">
       <div className="flex flex-col justify-center items-center w-full">
         <h1 className="text-2xl text-blue-950 font-semibold">
           All Registered Details
@@ -69,6 +69,14 @@ function DashBoard() {
                     Status:{" "}
                     <span className="font-normal">{detail.status}</span>
                   </p>
+
+                  {detail.status == "REMARKED" &&
+                     <p className="text-base sm:text-lg font-medium">
+                    Remark Note* :{" "}
+                    <span className="font-normal">{detail.remarkNote}</span>
+                  </p>
+                  }
+                 
                 </div>
 
 
