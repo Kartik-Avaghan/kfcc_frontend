@@ -50,7 +50,7 @@ function DashBoard() {
                         <p><span className="font-medium">ID:</span> #{detail.id}</p>
                         <p><span className="font-medium">Language:</span> {detail.language}</p>
                         <p><span className="font-medium">Category:</span> {detail.category}</p>
-                        <p><span className="font-medium">Application Date:</span> {new Date(detail.date).toLocaleDateString()}</p>
+                        <p><span className="font-medium">Submitted Date:</span> {new Date(detail.date).toLocaleDateString()}</p>
                       </div>
                     </div>
                     
