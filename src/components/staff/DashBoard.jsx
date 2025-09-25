@@ -44,6 +44,11 @@ function DashBoard() {
     >
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
+
+          <p className="text-base sm:text-lg font-medium">
+                    Application Id:{" "}
+                    <span className="font-normal">{detail.id}</span>
+                  </p>
           <p className="text-base sm:text-lg font-medium">
             Film Title:{" "}
             <span className="font-normal">{detail.title}</span>
@@ -52,6 +57,10 @@ function DashBoard() {
             Producer:{" "}
             <span className="font-normal">{detail.producer}</span>
           </p>
+          <p className="text-base sm:text-lg font-medium">
+                    Status:{" "}
+                    <span className="font-normal">{detail.status}</span>
+                  </p>
         </div>
 
        <button

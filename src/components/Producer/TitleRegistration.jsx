@@ -5,22 +5,22 @@ import { Link } from "react-router-dom";
 function TitleRegistration() {
   const [formData, setFormData] = useState({
     name: "",
-    date: "",
     address: "",
     title: "",
     firstFilm: "",
     institution: "",
-    memberId: "",
+    memberId: "102345",
+    gst_no:"",
     producer: "",
     language: "",
     previouslyRegistered: "",
     previouslyRegisteredDetails: "",
     filmsByInstitutes: "",
     director: "",
-    singer: "",
+    musicDirector: "",
     actor: "",
     category: "",
-    acceptedDate: "",
+   
   });
 
 
@@ -59,22 +59,23 @@ function TitleRegistration() {
         // Reset form
         setFormData({
           name: "",
-          date: new Date.now(),
+          
           address: "",
           title: "",
           firstFilm: "",
           institution: "",
-          memberId: "",
+          // memberId: "",
+          gst_no:"",
           producer: "",
           language: "",
           previouslyRegistered: "",
           previouslyRegisteredDetails: "",
           filmsByInstitutes: "",
           director: "",
-          singer: "",
+           musicDirector: "",
           actor: "",
           category: "",
-          acceptedDate: "",
+          
         });
 
        
@@ -169,7 +170,7 @@ function TitleRegistration() {
 
         {/* Institution & Member ID */}
         <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 w-full">
-          <div className="flex flex-col w-full ">
+          <div className="flex flex-col w-full md:w-1/2 ">
             <label className="mb-1 font-medium text-gray-700">
               Institution Name
             </label>
@@ -184,20 +185,20 @@ function TitleRegistration() {
             />
           </div>
 
-          {/* <div className="flex flex-col w-full md:w-1/2">
+          <div className="flex flex-col w-full md:w-1/2">
             <label className="mb-1 font-medium text-gray-700">
-              Membership Number
+              GST Number
             </label>
             <input
-              type="text"
-              name="memberId"
-              value={formData.memberId}
+              type="number"
+              name="gst_no"
+              value={formData.gst_no}
               onChange={handleChange}
-              placeholder="Membership ID"
+              placeholder="GST Number"
               className="border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-300"
               required
             />
-          </div> */}
+          </div>
         </div>
 
         {/* Producer & Language */}
@@ -311,8 +312,8 @@ function TitleRegistration() {
             <label className="mb-1 font-medium text-gray-700">Music Director</label>
             <input
               type="text"
-              name="singer"
-              value={formData.singer}
+              name="musicDirector"
+              value={formData.musicDirector}
               onChange={handleChange}
               placeholder="Music Director"
               className="border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-300"

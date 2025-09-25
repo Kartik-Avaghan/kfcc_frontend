@@ -68,6 +68,7 @@ function RegisterViewDetails({ detail, onClose }) {
         </h2>
 
         <div className="space-y-2 text-gray-800 text-sm sm:text-base">
+<p><span className="font-semibold">Application Id:</span> {detail.id}</p>
           <p><span className="font-semibold">Name:</span> {detail.name}</p>
           <p><span className="font-semibold">Date:</span> {new Date(detail.date).toLocaleDateString("en-In")}</p>
           <p><span className="font-semibold">Address:</span> {detail.address}</p>

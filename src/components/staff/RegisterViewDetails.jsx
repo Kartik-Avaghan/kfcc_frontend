@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Remark from "./Remark";
 
 function RegisterViewDetails({ detail, onClose }) {
+
+  const[showRemarkPopup,setShowRemarkPopup]=useState(false);
 
 const navigate=useNavigate();
 
@@ -71,7 +74,8 @@ const navigate=useNavigate();
         </h2>
 
         <div className="space-y-2 text-gray-800 text-sm sm:text-base">
-          <p><span className="font-semibold">Name:</span> Kartik {detail.name}</p>
+          <p><span className="font-semibold">Application Id:</span> {detail.id}</p>
+          <p><span className="font-semibold">Applicant Name:</span> Kartik {detail.name}</p>
           <p><span className="font-semibold">Date:</span> {new Date(detail.date).toLocaleDateString("en-In")}</p>
           <p><span className="font-semibold">Address:</span> Shankar Matha {detail.address}</p>
           <p><span className="font-semibold">Film Title:</span> {detail.title}</p>
@@ -92,10 +96,19 @@ const navigate=useNavigate();
           <div className="flex  justify-around items-center  mt-8">
             <button onClick={()=>approval(detail.id, true)} className="border border-green-500  rounded-2xl text-white bg-green-500 px-8 py-1   hover:bg-white hover:text-green-800 hover:border-green-500">Accept</button>
             <button onClick={()=>approval(detail.id, false)}  className="border border-red-500 rounded-2xl text-white bg-red-500 px-8 py-1  hover:bg-white hover:text-red-800 hover:border-red-500">Reject</button>
-            <button onClick={()=>approval(detail.id, false)}  className="border border-yellow-500 rounded-2xl text-white bg-yellow-500 px-8 py-1  hover:bg-white hover:text-yellow-800 hover:border-yellow-500">Remark</button>
+            <button onClick={()=>setShowRemarkPopup(true)}  className="border border-yellow-500 rounded-2xl text-white bg-yellow-500 px-8 py-1  hover:bg-white hover:text-yellow-800 hover:border-yellow-500">Remark</button>
           </div>
         </div>
       </div>
+
+
+      {
+        showRemarkPopup && (
+          <Remark applicationId={detail.id}
+          onClose={()=>setShowRemarkPopup(false)}/>
+        )
+
+      }
     </div>
   );
 }

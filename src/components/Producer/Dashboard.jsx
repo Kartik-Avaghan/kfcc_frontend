@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import RegisterViewDetails from "./RegisterViewDetails";
+import EditTitleRegistration from "./EditTitleRegistration";
 
 function DashBoard() {
   const [registerDetails, setRegisterDetails] = useState([]);
   const [selectedDetail, setSelectedDetail] = useState(null);
+  const [EditTitle,setEditTitle]=useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:8080/titleRegistration/member/102345`, {
@@ -27,6 +29,14 @@ function DashBoard() {
       .catch((error) => console.log("Fetching Error", error));
   }, []);
 
+
+
+  
+
+
+
+
+
   return (
     <div className="flex justify-center items-center h-full p-20">
       <div className="flex flex-col justify-center items-center w-full">
@@ -47,6 +57,10 @@ function DashBoard() {
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
                   <p className="text-base sm:text-lg font-medium">
+                    Application Id:{" "}
+                    <span className="font-normal">{detail.id}</span>
+                  </p>
+                  <p className="text-base sm:text-lg font-medium">
                     Film Title:{" "}
                     <span className="font-normal">{detail.title}</span>
                   </p>
@@ -55,15 +69,36 @@ function DashBoard() {
                     Status:{" "}
                     <span className="font-normal">{detail.status}</span>
                   </p>
-
                 </div>
 
-                <button
+
+
+
+
+
+                { detail.status != "REMARKED" &&
+                   <button
                   onClick={() => setSelectedDetail(detail)}
                   className=" bg-blue-950 text-white border border-blue-950 rounded-xl text-sm py-2 px-8 sm:text-base sm:py-2 sm:px-4 hover:bg-white hover:text-blue-950 transition w-full sm:w-auto "
                 >
                   View Details
                 </button>
+                }
+
+               
+
+                {
+                  detail.status == "REMARKED" &&
+                  <button
+                  onClick={() => {
+    setSelectedDetail(detail);  // store current application
+    setEditTitle(true);         // open edit form
+  }}
+                  className=" bg-blue-950 text-white border border-blue-950 rounded-xl text-sm py-2 px-8 sm:text-base sm:py-2 sm:px-4 hover:bg-white hover:text-blue-950 transition w-full sm:w-auto "
+                >
+                  Edit Application
+                </button>
+                }
               </div>
             </div>
           ))}
@@ -75,6 +110,13 @@ function DashBoard() {
         detail={selectedDetail}
         onClose={() => setSelectedDetail(null)}
       />
+
+
+    <EditTitleRegistration
+  show={EditTitle}   // control modal open/close
+  detail={selectedDetail}   // pass data to prefill form
+  onClose={() => setEditTitle(false)}
+/>
     </div>
   );
 }
