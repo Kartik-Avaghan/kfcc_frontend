@@ -11,10 +11,12 @@ import OMDashboard from '../pages/O&M/OMDashboard'
 import OMRegistrationViewDetails from '../pages/O&M/OMRegistrationViewDetails'
 import ProducerDashboard from '../pages/Producers/ProducerDashboard'
 import ProducerRegistrationViewDetails from '../pages/Producers/ProducerRegistrationViewDetails'
-import RCDashboard from '../pages/RCMember/RCDashboard'
-import RCRegistrationViewDetails from '../pages/RCMember/RCRegistrationViewDetails'
+import ECDashboard from '../pages/ECMember/ECDashboard'
+import ECRegistrationViewDetails from '../pages/ECMember/ECRegistrationViewDetails'
 import ProducerLoginPage from '../pages/Producers/ProducerLoginPage'
 import RemarkedTitlePage from '../pages/staffpages/RemarkedTitlePage'
+import OMRemarkedTitlePage from '../pages/O&M/OMRemarkedTitlePage'
+import ECRemarkedTitlePage from '../pages/ECMember/ECRemarkedTitlePage'
 
 
 function CustomRouter() {
@@ -36,6 +38,7 @@ function CustomRouter() {
               {/* O&M */}
               <Route path='/o&mdashboard' element={<OMDashboard/>}/>
               <Route path='/o&mregistrationdetails' element={<OMRegistrationViewDetails/>}/>
+              <Route path='/o&mremarkedtitles' element={<OMRemarkedTitlePage/>}/>
 
               
 
@@ -49,9 +52,13 @@ function CustomRouter() {
 
 
 
+
               {/* RC Members */}
-              <Route path='/ecdashboard' element={<RCDashboard/>}/>
-              <Route path='/ecregistrationdetails' element={<RCRegistrationViewDetails/>}/>
+              <Route path='/ecdashboard' element={<ECDashboard/>}/>
+              <Route path='/ecregistrationdetails' element={<ECRegistrationViewDetails/>}/>
+              <Route path='/ecremarkedtitles' element={<ECRemarkedTitlePage/>}/>
+
+
 
         </Routes>
     </div>

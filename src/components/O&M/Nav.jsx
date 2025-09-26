@@ -13,6 +13,12 @@ function Nav() {
       active: true
     },
     {
+      name: 'Remarked Titles',
+      icon: MessageSquare,
+      href: '/o&mremarkedtitles',
+      active: false
+    },
+    {
       name: 'Public Clearance',
       icon: Globe,
       href: '/publication',

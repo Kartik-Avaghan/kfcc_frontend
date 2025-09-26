@@ -1,6 +1,6 @@
 import React from 'react'
-import DashBoard from '../../components/RCMembers/DashBoard'
-import Nav from '../../components/RCMembers/Nav'
+import DashBoard from '../../components/ECMembers/DashBoard'
+import Nav from '../../components/ECMembers/Nav'
 
 function RCDashboard() {
   return (
