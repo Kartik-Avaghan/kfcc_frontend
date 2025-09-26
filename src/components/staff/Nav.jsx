@@ -9,7 +9,7 @@ function Nav() {
     {
       name: 'Title Registration',
       icon: FileText,
-      href: '/registration',
+      href: '/staffdashboard',
       active: true
     },
     {
