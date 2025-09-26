@@ -6,6 +6,7 @@ import { CheckCircle, Clock, AlertCircle, XCircle } from 'lucide-react';
 function DashBoard() {
   const [registerDetails, setRegisterDetails] = useState([]);
   const [selectedDetail, setSelectedDetail] = useState(null);
+  const[showdetails, setShowDetails]=useState(false)
   const [EditTitle, setEditTitle] = useState(false);
 
   useEffect(() => {
@@ -28,7 +29,7 @@ function DashBoard() {
         setRegisterDetails(data);
       })
       .catch((error) => console.log("Fetching Error", error));
-  }, []);
+  }, [EditTitle]);
 
 
   // Progress configuration based on status
@@ -182,7 +183,7 @@ function DashBoard() {
                     <div className="flex-shrink-0">
                       {detail.status !== "REMARKED" ? (
                         <button
-                          onClick={() => setSelectedDetail(detail)}
+                          onClick={() => {setSelectedDetail(detail);setShowDetails(true)}} 
                           className={`px-6 py-2.5 rounded-xl font-medium transition-colors duration-200 shadow-md hover:shadow-lg hover:cursor-pointer ${
                             detail.status === "APPROVED" 
                               ? "bg-green-600 text-white hover:bg-green-700"
@@ -236,16 +237,20 @@ function DashBoard() {
       </div>
 
       {/* ✅ Modal should be OUTSIDE map */}
-      <RegisterViewDetails
+      {showdetails &&  <RegisterViewDetails
         detail={selectedDetail}
+
         onClose={() => setSelectedDetail(null)}
       />
-
-      <EditTitleRegistration
+}
+     
+     {EditTitle &&
+       <EditTitleRegistration
         show={EditTitle} // control modal open/close
         detail={selectedDetail} // pass data to prefill form
         onClose={() => setEditTitle(false)}
       />
+     }
     </div>
   );
 }
