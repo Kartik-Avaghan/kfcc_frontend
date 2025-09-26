@@ -14,6 +14,7 @@ import ProducerRegistrationViewDetails from '../pages/Producers/ProducerRegistra
 import RCDashboard from '../pages/RCMember/RCDashboard'
 import RCRegistrationViewDetails from '../pages/RCMember/RCRegistrationViewDetails'
 import ProducerLoginPage from '../pages/Producers/ProducerLoginPage'
+import RemarkedTitlePage from '../pages/staffpages/RemarkedTitlePage'
 
 
 function CustomRouter() {
@@ -26,6 +27,7 @@ function CustomRouter() {
             <Route path='/' element={<StaffLoginPage/>}/>
             <Route path='/staffdashboard' element={<DashBoardPage/>}/>
             <Route path='/staffregistrationdetails' element={<RegisterViewDetailsPage/>}/>
+            <Route path='/remarkedtitles' element={<RemarkedTitlePage/>}/>
 
 
               
