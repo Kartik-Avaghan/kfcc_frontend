@@ -224,8 +224,11 @@ function RegisterViewDetails({ detail, onClose }) {
           </div>
 
           {/* Action Buttons (if needed) */}
+
+
+          {
+            detail.status !="REMARKED" &&(
           
-          {(detail.status === "PENDING" || detail.status === "IN_PROGRESS") && (
             <div className="mt-8 pt-6 border-t border-gray-200">
               <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
                 <Award className="w-5 h-5 text-blue-600" />
@@ -258,15 +261,19 @@ function RegisterViewDetails({ detail, onClose }) {
                 
               </div>
             </div>
-          )}
+            )
+          }
+          
+         
          
         </div>
       </div>
 
-      {
+       {
         showRemarkPopup && (
           <Remark applicationId={detail.id}
-          onClose={()=>setShowRemarkPopup(false)}/>
+          onClose={()=>setShowRemarkPopup()}
+          closeApplication={() => onClose()}/>
         )
 
       }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { X, MessageSquare, AlertTriangle, Send } from 'lucide-react';
 
-function Remark({ applicationId, onClose }) {
+function Remark({ applicationId, onClose,closeApplication }) {
   const [remark, setRemark] = useState("");
 
   function handleSubmit(e) {
@@ -23,11 +23,14 @@ function Remark({ applicationId, onClose }) {
         if (!response.ok) {
           throw new Error("Response not ok");
         }
+        onClose(false);
+        closeApplication(false);
+
         return response.json();
       })
       .then((data) => {
         console.log("Remark submitted:", data);
-        onClose(); // close popup after success
+         // close popup after success
       })
       .catch((error) => console.log("Error:", error));
   }

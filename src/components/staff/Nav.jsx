@@ -15,7 +15,7 @@ function Nav() {
     {
       name: 'Remarked Titles',
       icon: MessageSquare,
-      href: '/remarkedtitles',
+      href: '/staffremarkedtitles',
       active: false
     },
     {

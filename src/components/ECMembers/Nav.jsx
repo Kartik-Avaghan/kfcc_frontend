@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Film, FileText, Globe, LogOut, ChevronRight, User, Settings } from 'lucide-react';
+import { Film, FileText, Globe, LogOut, ChevronRight, User, Settings,MessageSquare } from 'lucide-react';
 
 function Nav() {
   const [activeItem, setActiveItem] = useState('Title Registration');

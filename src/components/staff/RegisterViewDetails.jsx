@@ -224,6 +224,9 @@ function RegisterViewDetails({ detail, onClose }) {
           </div>
 
           {/* Action Buttons (if needed) */}
+
+
+          
           
           {(detail.status === "PENDING" || detail.status === "IN_PROGRESS") && (
             <div className="mt-8 pt-6 border-t border-gray-200">
