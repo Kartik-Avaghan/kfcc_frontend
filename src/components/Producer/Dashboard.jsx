@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import RegisterViewDetails from "./RegisterViewDetails";
 import EditTitleRegistration from "./EditTitleRegistration";
-import { CheckCircle, Clock, AlertCircle, XCircle } from 'lucide-react';
+import { CheckCircle, Clock, AlertCircle, XCircle, Search, Plus} from 'lucide-react';
+import { Link } from "react-router-dom";
 
 function DashBoard() {
   const [registerDetails, setRegisterDetails] = useState([]);
   const [selectedDetail, setSelectedDetail] = useState(null);
   const[showdetails, setShowDetails]=useState(false)
   const [EditTitle, setEditTitle] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetch(`http://localhost:8080/titleRegistration/member/102345`, {
@@ -30,6 +32,17 @@ function DashBoard() {
       })
       .catch((error) => console.log("Fetching Error", error));
   }, [EditTitle]);
+
+
+  const filteredDetails = registerDetails.filter((detail) => {
+    const term = searchTerm.toLowerCase();
+    return (
+      detail.title?.toLowerCase().includes(term) ||
+      detail.producer?.toLowerCase().includes(term) ||
+      detail.director?.toLowerCase().includes(term) ||
+      detail.actor?.toLowerCase().includes(term)
+    );
+  });
 
 
   // Progress configuration based on status
@@ -99,7 +112,7 @@ function DashBoard() {
         <div className="flex items-center gap-2">
           <IconComponent className={`w-5 h-5 ${config.textColor}`} />
           <span className={`px-3 py-1 rounded-full text-sm font-medium ${config.bgColor} ${config.textColor} ${config.borderColor} border`}>
-            {status.replace('_', ' ')}
+            {status?.replace('_', ' ')}
           </span>
         </div>
 
@@ -150,10 +163,29 @@ function DashBoard() {
   return (
     <div className="flex justify-center items-center p-10">
       <div className="flex flex-col justify-center items-center w-full">
-        <h1 className="text-3xl font-bold text-gray-800 mb-8">Title Application Dashboard</h1>
-      
+        <h1 className="text-3xl font-bold text-gray-800 mb-4">Title Application Dashboard</h1>
+
+        {/* Search Bar */}
+        <div className=" p-2 w-full flex justify-between items-center">
+            <div className="flex items-center gap-2 mt-6 mb-6 w-full max-w-lg border-2 border-gray-300 rounded-xl p-2.5">
+            <Search className="w-5 h-5 text-gray-600" />
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search by title, producer, director, actor..."
+              className="w-full focus:outline-none"
+            />
+          </div>
+
+          <Link to="/titleregistration" className="flex gap-2 h-min bg-blue-900 text-white p-3 rounded-lg"> <Plus/> Apply for Registration</Link>
+
+        </div>
+
+        
+        {filteredDetails.length > 0 ? (
          <div className="grid grid-cols-1 gap-6 w-full">
-          {registerDetails.map((detail) => {
+          {filteredDetails.map((detail) => {
             const config = getProgressConfig(detail.status);
             
             return (
@@ -249,6 +281,7 @@ function DashBoard() {
             );
           })}
         </div>
+        ) : ( <div className="p-4 text-gray-500 text-xl mt-10">No applications found</div>) }
         
       </div>
 

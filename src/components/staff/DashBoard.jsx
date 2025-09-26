@@ -6,6 +6,8 @@ import { Eye, Calendar, Film, User, Building, Search, Filter } from 'lucide-reac
 function DashBoard() {
   const [registerDetails, setRegisterDetails] = useState([]);
   const [selectedDetail, setSelectedDetail] = useState(null);
+   const [searchTerm, setSearchTerm] = useState(""); 
+
 
   useEffect(() => {
     fetch(`http://localhost:8080/titleApplication/pending?userrole=STAFF`, {
@@ -27,6 +29,18 @@ function DashBoard() {
       .catch((error) => console.log("Fetching Error", error));
   }, [selectedDetail]);
 
+
+    // Filter details by search term (title, producer, director, actor)
+  const filteredDetails = registerDetails.filter((detail) => {
+    const term = searchTerm.toLowerCase();
+    return (
+      detail.title?.toLowerCase().includes(term) ||
+      detail.producer?.toLowerCase().includes(term) ||
+      detail.director?.toLowerCase().includes(term) ||
+      detail.actor?.toLowerCase().includes(term)
+    );
+  });
+
   return (
     <div className="flex justify-center items-center  p-10">
       <div className="flex flex-col justify-center items-center w-full">
@@ -34,9 +48,21 @@ function DashBoard() {
           All Registered Details
         </h1>
 
+        {/* Search Bar */}
+        <div className="flex items-center gap-2 mt-6 mb-2 w-full max-w-lg">
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search by title, producer, director, actor..."
+            className="w-full border rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          />
+          <Search className="w-5 h-5 text-blue-600" />
+        </div>
+
         {/* Grid of Cards */}
         <div className="grid grid-cols-1 gap-6 mt-6 w-full px-2 sm:px-4">
-          {registerDetails.map((detail) => (
+          {filteredDetails.map((detail) => (
             <div
                 key={detail.id}
                 className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-blue-500 overflow-hidden"
