@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Remark from "./Remark";
+import Reject from "./Reject";
 import { X, Calendar, MapPin, User, Film, Building, Award, Music, Users, Tag, CheckCircle, XCircle, Clock, AlertCircle , MessageSquare} from 'lucide-react';
 
 
