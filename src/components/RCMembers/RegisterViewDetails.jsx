@@ -273,7 +273,8 @@ function RegisterViewDetails({ detail, onClose }) {
       {
         showRejectPopup && (
           <Reject applicationId={detail.id}
-          onClose={()=>setShowRejectPopup(false)}/>
+          onClose={()=>setShowRejectPopup()}
+          closeApplication={() => onClose()}/>
         )
 
       }
