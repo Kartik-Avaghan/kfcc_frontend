@@ -14,9 +14,9 @@ function Remark({ applicationId, onClose }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        "role": "COMMITTEE",
-        "remarked_by": "kartik",
-        "remark_note": remark,
+        role: "COMMITTEE",
+        remarked_by: "kartik",
+        remark_note: remark,
       }),
     })
       .then((response) => {

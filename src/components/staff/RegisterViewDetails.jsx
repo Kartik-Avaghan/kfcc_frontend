@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Remark from "./Remark";
+import Reject from "./Reject";
 import { X, Calendar, MapPin, User, Film, Building, Award, Music, Users, Tag, CheckCircle, XCircle, Clock, AlertCircle , MessageSquare} from 'lucide-react';
 
 
 function RegisterViewDetails({ detail, onClose }) {
 
-  const[showRemarkPopup,setShowRemarkPopup]=useState(false);
+  const [showRemarkPopup, setShowRemarkPopup] = useState(false);
+  const [showRejectPopup, setShowRejectPopup] = useState(false);
 
   function approval(applicationId,approve){
 
@@ -247,7 +249,7 @@ function RegisterViewDetails({ detail, onClose }) {
                 </button>
 
                 <button 
-                  onClick={() => approval(detail.id, false)}
+                  onClick={() => setShowRejectPopup(true)}
                   className="flex-1 bg-red-600 text-white py-3 px-6 rounded-xl font-medium hover:bg-red-700 active:bg-red-800 transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer"
                 >
                   <XCircle className="w-5 h-5" />
@@ -264,10 +266,23 @@ function RegisterViewDetails({ detail, onClose }) {
       {
         showRemarkPopup && (
           <Remark applicationId={detail.id}
-          onClose={()=>setShowRemarkPopup(false)}/>
+          onClose={()=>setShowRemarkPopup()}
+          closeApplication={() => onClose()}/>
         )
 
       }
+
+      
+
+       {
+        showRejectPopup && (
+          <Reject applicationId={detail.id}
+          onClose={()=>setShowRejectPopup()}
+          closeApplication={() => onClose()}/>
+        )
+
+      }
+
     </div>
 
   );

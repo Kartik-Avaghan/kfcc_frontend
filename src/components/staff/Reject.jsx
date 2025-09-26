@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import { X, MessageSquare, AlertTriangle, Send } from 'lucide-react';
 
-function Remark({ applicationId, onClose }) {
+function Reject({ applicationId, onClose,closeApplication }) {
   const [remark, setRemark] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch(`http://localhost:8080/titleApplication/${applicationId}/remark`, {
+    fetch(`http://localhost:8080/titleApplication/${applicationId}/approve`, {
       method: "POST",
       headers: {
         "Authorization": localStorage.getItem("token"),
         "Content-Type": "application/json",
       },
-     body: JSON.stringify({
-        role: "MEMBERS",
-       remarked_by: "kartik",
+      body: JSON.stringify({
+        role: "STAFF",
+        approved_by: "kartik",
+        approve:false,
         remark_note: remark,
       }),
     })
@@ -23,11 +24,13 @@ function Remark({ applicationId, onClose }) {
         if (!response.ok) {
           throw new Error("Response not ok");
         }
+        onClose(false);
+        closeApplication(false);
         return response.json();
       })
       .then((data) => {
         console.log("Remark submitted:", data);
-        onClose(); // close popup after success
+         // close popup after success
       })
       .catch((error) => console.log("Error:", error));
   }
@@ -42,7 +45,7 @@ function Remark({ applicationId, onClose }) {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="bg-yellow-600 text-white p-6 relative">
+        <div className="bg-red-600 text-white p-6 relative">
           <button
             onClick={onClose}
             className="absolute top-4 right-4 text-white hover:text-gray-200 transition-colors p-1 rounded-full hover:bg-white hover:bg-opacity-20"
@@ -55,7 +58,7 @@ function Remark({ applicationId, onClose }) {
               <MessageSquare className="w-6 h-6" />
             </div>
             <div>
-              <h2 className="text-xl font-bold">Add Remark</h2>
+              <h2 className="text-xl font-bold">Reject Application</h2>
               <p className="text-yellow-100 text-sm">Provide feedback for this application</p>
             </div>
           </div>
@@ -110,10 +113,10 @@ function Remark({ applicationId, onClose }) {
               <button
                 type="submit"
                 disabled={remark.length < 10}
-                className="flex-1 bg-gradient-to-r from-yellow-600 to-orange-600 text-white px-6 py-3 rounded-xl font-medium hover:from-yellow-700 hover:to-orange-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:transform-none focus:outline-none focus:ring-2 focus:ring-yellow-300 cursor-pointer"
+                className="flex-1 bg-gradient-to-r from-red-600 to-orange-600 text-white px-6 py-3 rounded-xl font-medium hover:from-yellow-700 hover:to-orange-700 disabled:from-gray-300 disabled:to-gray-400 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:transform-none focus:outline-none focus:ring-2 focus:ring-yellow-300 cursor-pointer"
               >
-                <Send className="w-4 h-4" />
-                Submit Remark
+                <X className="size-5" />
+                 Reject 
               </button>
             </div>
           </form>
@@ -126,95 +129,4 @@ function Remark({ applicationId, onClose }) {
   );
 }
 
-export default Remark;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useState } from "react";
-
-// function Remark({ applicationId, onClose }) {
-//   const [remark, setRemark] = useState("");
-
-//   function handleSubmit(e) {
-//     e.preventDefault();
-
-//     fetch(`http://localhost:8080/titleApplication/${applicationId}/remark`, {
-//       method: "POST",
-//       headers: {
-//         "Authorization": localStorage.getItem("token"),
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({
-//         role: "MEMBERS",
-//         approved_by: "kartik",
-//         remark: remark,
-//       }),
-//     })
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error("Response not ok");
-//         }
-//         return response.json();
-//       })
-//       .then((data) => {
-//         console.log("Remark submitted:", data);
-//         onClose(); // close popup after success
-//       })
-//       .catch((error) => console.log("Error:", error));
-//   }
-
-//   return (
-//     <div
-//       className="fixed inset-0 bg-white bg-opacity-40 flex justify-center items-center z-50"
-//       onClick={onClose}
-//     >
-//       <div
-//         className="bg-white rounded-lg shadow-lg p-6 w-100 relative"
-//         onClick={(e) => e.stopPropagation()}
-//       >
-//         <button
-//           onClick={onClose}
-//           className="absolute top-2 right-2 text-gray-500 hover:text-black"
-//         >
-//           ✕
-//         </button>
-
-//         <h2 className="text-xl text-center text-blue-950 font-semibold mb-4">Add Remark</h2>
-
-//         <form onSubmit={handleSubmit} className="space-y-4">
-//           <textarea
-//             value={remark}
-//             onChange={(e) => setRemark(e.target.value)}
-//             placeholder="Enter your remark..."
-//             className="w-full border border-blue-950 rounded-md p-2"
-//             rows={4}
-//             required
-//           />
-
-//           <button
-//             type="submit"
-//             className="border border-yellow-500 rounded-xl text-white bg-yellow-500 px-8 py-1 hover:bg-white hover:text-yellow-800 hover:border-yellow-500 w-full"
-//           >
-//             Submit Remark
-//           </button>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Remark;
+export default Reject;

@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Film, FileText, Globe, LogOut, ChevronRight, User, Settings } from 'lucide-react';
+import { Film, MessageSquare, FileText, Globe, LogOut, ChevronRight, User, Settings } from 'lucide-react';
 
 function Nav() {
   const [activeItem, setActiveItem] = useState('Title Registration');
@@ -13,11 +13,18 @@ function Nav() {
       active: true
     },
     {
+      name: 'Remarked Titles',
+      icon: MessageSquare,
+      href: '/remarked-titles',
+      active: false
+    },
+    {
       name: 'Public Clearance',
       icon: Globe,
       href: '/publication',
       active: false
     }
+      
   ];
 
   return (
@@ -44,8 +51,8 @@ function Nav() {
               <User className="w-5 h-5" />
             </div>
             <div>
-              <p className="font-medium">Admin User</p>
-              <p className="text-xs text-blue-200">Administrator</p>
+              <p className="font-medium">Staff User</p>
+              <p className="text-xs text-blue-200">Staff</p>
             </div>
           </div>
         </div>

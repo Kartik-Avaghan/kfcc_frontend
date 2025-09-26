@@ -44,8 +44,8 @@ function Nav() {
               <User className="w-5 h-5" />
             </div>
             <div>
-              <p className="font-medium">Admin User</p>
-              <p className="text-xs text-blue-200">Administrator</p>
+              <p className="font-medium">O&M Committe</p>
+              <p className="text-xs text-blue-200">Committe</p>
             </div>
           </div>
         </div>

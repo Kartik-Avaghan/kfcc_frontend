@@ -228,6 +228,22 @@ function DashBoard() {
                       </div>
                     </div>
                   )}
+
+
+                   {/* Remark Note */}
+                  {detail.status === "REJECTED" && detail.remarkNote && (
+                    <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                      <div className="flex items-start gap-2">
+                        <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <h4 className="font-medium text-red-800 mb-1">
+                            Rejected by {detail.remarked_by}
+                          </h4>
+                          <p className="text-red-700 text-sm leading-relaxed">{detail.remarkNote}</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             );
