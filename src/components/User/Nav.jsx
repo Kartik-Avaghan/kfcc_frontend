@@ -1,9 +1,11 @@
+import { useState } from "react";
+import { FileText, LogOut, ChevronRight, User } from "lucide-react";
 
-import React, { useState } from 'react';
-import { Film, FileText, Globe, LogOut, ChevronRight, User, BarChart3, Home } from 'lucide-react';
+import logo from "../../assets/logo.jpeg";
+import { Link } from "react-router-dom";
 
 function Nav() {
-  const [activeItem, setActiveItem] = useState('Dashboard');
+  const [activeItem, setActiveItem] = useState("Dashboard");
 
   const menuItems = [
     // {
@@ -13,10 +15,10 @@ function Nav() {
     //   active: false
     // },
     {
-      name: 'Membership Form',
+      name: "Membership Form",
       icon: FileText,
-      href: '/membershipform',
-      active: false
+      href: "/user/membership",
+      active: false,
     },
     // {
     //   name: 'Public Clearance',
@@ -33,12 +35,18 @@ function Nav() {
         {/* Header */}
         <div className="p-6 border-b border-blue-800">
           <div className="flex items-center space-x-3 mb-2">
-            <div className="p-2 bg-white bg-opacity-10 rounded-lg backdrop-blur-sm">
-              <Film className="w-6 h-6 text-black" />
+            <div className="">
+
+              <img
+                src={logo}
+                alt="KFCC logo"
+                srcset=""
+                className="size-14 rounded-full"
+              />
             </div>
             <div>
               <h1 className="text-2xl font-bold tracking-wide">KFCC</h1>
-              <p className="text-xs text-blue-200">User Portal</p>
+              <p className="text-xs text-blue-200">Karnataka Film Chamber</p>
             </div>
           </div>
         </div>
@@ -50,8 +58,8 @@ function Nav() {
               <User className="w-5 h-5" />
             </div>
             <div>
-              <p className="font-medium">User</p>
-              <p className="text-xs text-blue-200">Film User</p>
+              <p className="font-medium">Welcome User</p>
+              <p className="text-xs text-blue-200">user</p>
             </div>
           </div>
         </div>
@@ -65,7 +73,7 @@ function Nav() {
             {menuItems.map((item) => {
               const IconComponent = item.icon;
               const isActive = activeItem === item.name;
-              
+
               return (
                 <a
                   key={item.name}
@@ -77,15 +85,21 @@ function Nav() {
                   `}
                 >
                   <div className="flex items-center space-x-3">
-                    <IconComponent 
-                      className={`w-5 h-5 ${isActive ? 'text-blue-200' : 'text-blue-300 group-hover:text-white'} transition-colors`} 
+                    <IconComponent
+                      className={`w-5 h-5 ${
+                        isActive
+                          ? "text-blue-200"
+                          : "text-blue-300 group-hover:text-white"
+                      } transition-colors`}
                     />
                     <span className="font-medium">{item.name}</span>
                   </div>
-                  <ChevronRight 
+                  <ChevronRight
                     className={`w-4 h-4 transition-all duration-200 ${
-                      isActive ? 'text-blue-200 rotate-90' : 'text-blue-400 group-hover:text-white group-hover:translate-x-1'
-                    }`} 
+                      isActive
+                        ? "text-blue-200 rotate-90"
+                        : "text-blue-400 group-hover:text-white group-hover:translate-x-1"
+                    }`}
                   />
                 </a>
               );
@@ -93,20 +107,17 @@ function Nav() {
           </nav>
         </div>
 
-      
-
         {/* Logout Section */}
         <div className="p-6">
-          <a
-            href="/producerlogin"
-            className="group flex items-center justify-center space-x-3 w-full p-4 border-2 border-red-400 rounded-xl text-red-300 hover:bg-red-500 hover:text-white hover:border-red-500 transition-all duration-200 font-medium"
+          <Link
+            to="/login"
+            className="group flex items-center justify-center space-x-3 w-full p-3 border-1 rounded-xl text-white hover:bg-red-500 hover:text-white hover:border-red-500 transition-all duration-200 font-medium"
           >
             <LogOut className="w-5 h-5 group-hover:scale-110 transition-transform" />
             <span>Logout</span>
-          </a>
+          </Link>
         </div>
       </div>
-     
     </div>
   );
 }

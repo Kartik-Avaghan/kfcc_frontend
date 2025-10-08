@@ -7,18 +7,29 @@ import {
   Phone,
   Mail,
   Layers,
-  Building, 
+  Building,
+  Droplet,
+  Info,
 } from "lucide-react";
 
 const MembershipForm = () => {
   const today = new Date();
   const [formData, setFormData] = useState({
-    applicantName: "",
+    applicantName: {
+      firstName: "",
+      middleName: "",
+      lastName: "",
+    },
     date: today.toISOString().split("T")[0],
-    applicantAddress: "",
+    applicantAddress: {
+      line1: "",
+      line2: "",
+      line3: "",
+    },
     applicantImage: null,
     applicantPhNo: "",
     applicantEmail: "",
+    applicantBloodGroup: "",
     applicantMembershipCategory: "",
     applicantOwnershipType: "",
     proprietor: {
@@ -66,6 +77,22 @@ const MembershipForm = () => {
       const newPartners = [...formData.partners];
       newPartners[index][name] = files ? files[0] : value;
       setFormData((prev) => ({ ...prev, partners: newPartners }));
+    } else if (section === "applicantName") {
+      setFormData((prev) => ({
+        ...prev,
+        applicantName: {
+          ...prev.applicantName,
+          [name]: files ? files[0] : value,
+        },
+      }));
+    } else if (section === "applicantAddress") {
+      setFormData((prev) => ({
+        ...prev,
+        applicantAddress: {
+          ...prev.applicantAddress,
+          [name]: files ? files[0] : value,
+        },
+      }));
     } else {
       setFormData((prev) => ({
         ...prev,
@@ -175,7 +202,7 @@ const MembershipForm = () => {
   return (
     <div className="max-w-6xl mx-auto p-8 bg-white  rounded-lg space-y-6">
       <div className="text-center space-y-2">
-        <h2 className="text-3xl font-bold text-blue-900">
+        <h2 className="text-3xl font-bold text-blue-900 mb-2">
           ಸದಸ್ಯತ್ವದ ಅರ್ಜಿಯೊಂದಿಗೆ ಲಗತ್ತಿಸಬೇಕದ ವಿವರಗಳು
         </h2>
         <h3 className="text-lg font-semibold text-gray-700">
@@ -185,25 +212,46 @@ const MembershipForm = () => {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Applicant Details */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 rounded-xl">
-          {/* Applicant Name */}
-          <div>
-            <label className=" font-semibold text-gray-800 mb-1 flex items-center gap-2">
-              <User className="w-4 h-4 text-blue-700" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-4 rounded-xl">
+          <div className="col-span-2">
+            <label className=" font-semibold text-gray-800 mb-2 flex items-center gap-2">
+              <User className="size-4 text-blue-700" />
               ಸದಸ್ಯತ್ವದ ರಿಜಿಸ್ಟರ್‌ನಲ್ಲಿ ನಮೂದಿಸಬೇಕಾದ ಅರ್ಜಿದಾರರ ಅಥವಾ ಸಂಸ್ಥೆಯ ಹೆಸರು
               / Name of Applicant
             </label>
-            <input
-              type="text"
-              name="applicantName"
-              value={formData.applicantName}
-              onChange={handleInputChange}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 transition"
-            />
+
+            <div className="w-full flex gap-4">
+              <input
+                type="text"
+                name="firstName"
+                value={formData.applicantName.firstName}
+                onChange={(e) => handleInputChange(e, "applicantName")}
+                placeholder="first name"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 transition"
+              />
+
+              <input
+                type="text"
+                name="middleName"
+                value={formData.applicantName.middleName}
+                onChange={(e) => handleInputChange(e, "applicantName")}
+                placeholder="middle name"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 transition"
+              />
+
+              <input
+                type="text"
+                name="lastName"
+                value={formData.applicantName.lastName}
+                onChange={(e) => handleInputChange(e, "applicantName")}
+                placeholder="last name"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 transition"
+              />
+            </div>
           </div>
 
           {/* Date */}
-          <div>
+          {/* <div>
             <label className=" font-semibold text-gray-800 mb-1 flex items-center gap-2">
               <Calendar className="w-4 h-4 text-blue-700" />
               ದಿನಾಂಕ / Date
@@ -214,56 +262,103 @@ const MembershipForm = () => {
               readOnly
               className="w-full border border-gray-200 rounded-lg px-3 py-2 bg-gray-100 text-gray-600 cursor-not-allowed"
             />
-          </div>
+          </div> */}
 
           {/* Address */}
-          <div>
-            <label className=" font-semibold text-gray-800 mb-1 flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-blue-700" />
+          <div className="col-span-2">
+            <label className=" font-semibold text-gray-800 mb-2 flex items-center gap-2 ">
+              <MapPin className="size-4 text-blue-700" />
               ಸದಸ್ಯತ್ವದ ರಿಜಿಸ್ಟರ್‌ನಲ್ಲಿ ನಮೂದಿಸಬೇಕಾದ ಅರ್ಜಿದಾರರ ಅಥವಾ ಸಂಸ್ಥೆಯ ವಿಳಾಸ
               / Address
             </label>
-            <input
-              type="text"
-              name="applicantAddress"
-              value={formData.applicantAddress}
-              onChange={handleInputChange}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-            />
+
+            <div className="w-full flex gap-4">
+              <input
+                type="text"
+                name="line1"
+                value={formData.applicantAddress.line1}
+                onChange={(e) => handleInputChange(e, "applicantAddress")}
+                placeholder="Address line 1"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 transition"
+              />
+
+              <input
+                type="text"
+                name="line2"
+                value={formData.applicantAddress.line2}
+                onChange={(e) => handleInputChange(e, "applicantAddress")}
+                placeholder="Address line 2"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 transition"
+              />
+
+              <input
+                type="text"
+                name="line3"
+                value={formData.applicantAddress.line3}
+                onChange={(e) => handleInputChange(e, "applicantAddress")}
+                placeholder="Address line 3"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 transition"
+              />
+            </div>
           </div>
 
           {/* Image */}
           <div>
-            <label className="block font-semibold text-gray-800 mb-1 flex items-center gap-2">
+            <label className=" font-semibold text-gray-800 mb-2 flex items-center gap-2">
               <ImageIcon className="w-4 h-4 text-blue-700" />
-              ಚಿತ್ರ / Image
+              ಅರ್ಜಿದಾರರ ಚಿತ್ರ / Applicant Image
             </label>
             <input
               type="file"
               name="applicantImage"
               onChange={handleInputChange}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700 transition file:text-sm"
+              className="w-full border border-gray-300 rounded-lg px-3 py-1 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700 transition file:text-[12px]"
             />
+          </div>
+
+          <div className="mt-1">
+            <label className="font-semibold text-gray-800 mb-1 flex items-center gap-2">
+              <Droplet className="w-4 h-4 text-blue-700" />
+              ಅರ್ಜಿದಾರರ ರಕ್ತದ ಗುಂಪು / Applicant Blood Group
+            </label>
+            <select
+              name="applicantBloodGroup"
+              value={formData.applicantBloodGroup}
+              onChange={handleInputChange}
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 transition"
+            >
+              <option value="">Select</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="special">Special</option>
+            </select>
           </div>
 
           {/* Phone Number */}
           <div>
-            <label className="block font-semibold text-gray-800 mb-1 flex items-center gap-2">
+            <label className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
               <Phone className="w-4 h-4 text-blue-700" />
-              ದೂರವಾಣಿ ಸಂಖ್ಯೆ / Telephone No.
+              ದೂರವಾಣಿ ಸಂಖ್ಯೆ / Mobile No.
             </label>
             <input
               type="text"
               name="applicantPhNo"
               value={formData.applicantPhNo}
               onChange={handleInputChange}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              placeholder="+91"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 transition"
             />
           </div>
 
           {/* Email */}
           <div>
-            <label className="block font-semibold text-gray-800 mb-1 flex items-center gap-2">
+            <label className=" font-semibold text-gray-800 mb-1 flex items-center gap-2">
               <Mail className="w-4 h-4 text-blue-700" />
               ಇ-ಮೇಲ್ ಐಡಿ / E-mail ID
             </label>
@@ -271,14 +366,15 @@ const MembershipForm = () => {
               type="email"
               name="applicantEmail"
               value={formData.applicantEmail}
+              placeholder="example@mail.com"
               onChange={handleInputChange}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2  transition"
             />
           </div>
 
           {/* Membership Category */}
           <div>
-            <label className="block font-semibold text-gray-800 mb-1 flex items-center gap-2">
+            <label className="font-semibold text-gray-800 mb-1 flex items-center gap-2">
               <Layers className="w-4 h-4 text-blue-700" />
               ಕೋರಿರುವ ಸದಸ್ಯತ್ವದ ವರ್ಗ / Membership Category
             </label>
@@ -286,7 +382,7 @@ const MembershipForm = () => {
               name="applicantMembershipCategory"
               value={formData.applicantMembershipCategory}
               onChange={handleInputChange}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 transition"
             >
               <option value="">Select</option>
               <option value="Producer">Producer</option>
@@ -301,7 +397,7 @@ const MembershipForm = () => {
 
           {/* Ownership Type */}
           <div>
-            <label className="block font-semibold text-gray-800 mb-1 flex items-center gap-2">
+            <label className=" font-semibold text-gray-800 mb-1 flex items-center gap-2">
               <Building className="w-4 h-4 text-blue-700" />
               ಮಾಲೀಕತ್ವವೇ / Ownership Type
             </label>
@@ -309,7 +405,7 @@ const MembershipForm = () => {
               name="applicantOwnershipType"
               value={formData.applicantOwnershipType}
               onChange={handleInputChange}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 transition"
             >
               <option value="">Select</option>
               <option value="Proprietor">Proprietor</option>
@@ -323,26 +419,185 @@ const MembershipForm = () => {
 
         {/* Proprietor Form */}
         {formData.applicantOwnershipType === "Proprietor" && (
-          <div className="border p-4 rounded space-y-3 bg-gray-50">
-            <h3 className="font-semibold">Proprietor Details</h3>
-            {Object.keys(formData.proprietor).map((key) => (
-              <div key={key}>
-                <label className="block font-medium">{key}</label>
+          <div className="rounded-lg p-4 mt-1">
+            <h2 className="text-lg font-semibold mb-3">Proprietor Details</h2>
+
+            <div className="grid grid-cols-2 gap-4">
+              {/* Proprietor Name */}
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Proprietor Name
+                </label>
                 <input
-                  type={
-                    key.includes("Dob")
-                      ? "date"
-                      : key.includes("Img") || key.includes("ESignature")
-                      ? "file"
-                      : "text"
-                  }
-                  name={key}
-                  value={formData.proprietor[key]}
+                  type="text"
+                  name="proprietorName"
+                  value={formData.proprietor.proprietorName}
                   onChange={(e) => handleInputChange(e, "proprietor")}
-                  className="w-full border rounded px-3 py-2"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2"
+                  placeholder="Enter proprietor name"
                 />
               </div>
-            ))}
+
+              {/* Proprietor Address */}
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Address
+                </label>
+                <input
+                  type="text"
+                  name="proprietorAddress"
+                  value={formData.proprietor.proprietorAddress}
+                  onChange={(e) => handleInputChange(e, "proprietor")}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2"
+                  placeholder="Enter address"
+                />
+              </div>
+
+              {/* Date of Birth */}
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Date of Birth
+                </label>
+                <input
+                  type="date"
+                  name="proprietorDob"
+                  value={formData.proprietor.proprietorDob}
+                  onChange={(e) => handleInputChange(e, "proprietor")}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2"
+                />
+              </div>
+
+              {/* Blood Group */}
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Blood Group
+                </label>
+                <select
+                  name="proprietorBloodGroup"
+                  value={formData.proprietor.proprietorBloodGroup}
+                  onChange={(e) => handleInputChange(e, "proprietor")}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 transition"
+                >
+                  <option value="">Select Blood Group</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                  <option value="special">Special</option>
+                </select>
+              </div>
+
+              {/* PAN Number */}
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  PAN Number
+                </label>
+                <input
+                  type="text"
+                  name="proprietorPanNo"
+                  value={formData.proprietor.proprietorPanNo}
+                  onChange={(e) => handleInputChange(e, "proprietor")}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2"
+                  placeholder="Enter PAN number"
+                />
+              </div>
+
+              {/* Aadhaar Number */}
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Aadhaar Number
+                </label>
+                <input
+                  type="number"
+                  name="proprietorAadhaarNo"
+                  value={formData.proprietor.proprietorAadhaarNo}
+                  onChange={(e) => handleInputChange(e, "proprietor")}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2"
+                  placeholder="Enter Aadhaar number"
+                />
+              </div>
+            </div>
+
+            {/* File Uploads */}
+            <div className="grid grid-cols-3 gap-4 mt-4">
+              {/* PAN Image */}
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  PAN Image
+                </label>
+                <input
+                  type="file"
+                  name="proprietorPanImg"
+                  accept="image/*"
+                  onChange={(e) => handleInputChange(e, "proprietor")}
+                  className="w-full border border-gray-300 rounded-lg px-1 py-1 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700 transition file:text-[12px] cursor-pointer file:cursor-pointer"
+                />
+                {formData.proprietor.proprietorPanImg && (
+                  <img
+                    src={URL.createObjectURL(
+                      formData.proprietor.proprietorPanImg
+                    )}
+                    alt="PAN Preview"
+                    className="mt-2 h-24 rounded border"
+                  />
+                )}
+              </div>
+
+              {/* Aadhaar Image */}
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Aadhaar Image
+                </label>
+                <input
+                  type="file"
+                  name="proprietorAadhaarImg"
+                  accept="image/*"
+                  onChange={(e) => handleInputChange(e, "proprietor")}
+                  className="w-full border border-gray-300 rounded-lg px-1 py-1 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700 transition file:text-[12px] cursor-pointer file:cursor-pointer"
+                />
+                {formData.proprietor.proprietorAadhaarImg && (
+                  <img
+                    src={URL.createObjectURL(
+                      formData.proprietor.proprietorAadhaarImg
+                    )}
+                    alt="Aadhaar Preview"
+                    className="mt-2 h-24 rounded border"
+                  />
+                )}
+              </div>
+
+              {/* E-Signature */}
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  E-Signature
+                </label>
+
+                <div className="flex items-center gap-3">
+                  <input
+                    type="file"
+                    name="proprietorESignature"
+                    accept="image/*"
+                    onChange={(e) => handleInputChange(e, "proprietor")}
+                    className="w-full border border-gray-300 rounded-lg px-1 py-1 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700 transition file:text-[12px] cursor-pointer file:cursor-pointer"
+                  />
+                  <Info className="cursor-pointer" />
+                </div>
+
+                {formData.proprietor.proprietorESignature && (
+                  <img
+                    src={URL.createObjectURL(
+                      formData.proprietor.proprietorESignature
+                    )}
+                    alt="E-Signature Preview"
+                    className="mt-2 h-24 rounded border"
+                  />
+                )}
+              </div>
+            </div>
           </div>
         )}
 
@@ -350,38 +605,42 @@ const MembershipForm = () => {
         {["Partnership", "Limited", "Company", "Association"].includes(
           formData.applicantOwnershipType
         ) && (
-          <div className="border p-4 rounded space-y-3 bg-gray-50">
+          <div className=" p-4 rounded space-y-3">
             <h3 className="font-semibold">Partners / Directors / Members</h3>
             {formData.partners.map((partner, idx) => (
-              <div key={idx} className="border p-2 rounded space-y-2">
-                <h4>Partner {idx + 1}</h4>
-                {Object.keys(partner).map((key) => (
-                  <div key={key}>
-                    <label className="block font-medium">{key}</label>
-                    <input
-                      type={
-                        key.includes("Dob")
-                          ? "date"
-                          : key.includes("Img") || key.includes("ESignature")
-                          ? "file"
-                          : "text"
-                      }
-                      name={key}
-                      value={partner[key]}
-                      onChange={(e) => handleInputChange(e, "partners", idx)}
-                      className="w-full border rounded px-3 py-2"
-                    />
-                  </div>
-                ))}
+              <div key={idx} className=" p-2 rounded space-y-2">
+                <h4 className="text-blue-700 font-semibold">
+                  Partner {idx + 1}
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {Object.keys(partner).map((key) => (
+                    <div key={key}>
+                      <label className="block font-medium mb-1">{key}</label>
+                      <input
+                        type={
+                          key.includes("Dob")
+                            ? "date"
+                            : key.includes("Img") || key.includes("ESignature")
+                            ? "file"
+                            : "text"
+                        }
+                        name={key}
+                        value={partner[key]}
+                        onChange={(e) => handleInputChange(e, "partners", idx)}
+                        className="w-full border border-gray-300 rounded-lg px-3 py-2 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700 transition file:text-[12px] cursor-pointer file:cursor-pointer"
+                      />
+                    </div>
+                  ))}
+                </div>
                 {formData.partners.length > 1 && (
-                  <button
-                    type="button"
-                    onClick={() => removePartner(idx)}
-                    className="text-red-600 underline"
-                  >
-                    Remove Partner
-                  </button>
-                )}
+                    <button
+                      type="button"
+                      onClick={() => removePartner(idx)}
+                      className="text-red-600 underline"
+                    >
+                      Remove Partner
+                    </button>
+                  )}
               </div>
             ))}
             <button
