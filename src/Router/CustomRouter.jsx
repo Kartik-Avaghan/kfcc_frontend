@@ -17,6 +17,7 @@ import ProducerLoginPage from '../pages/Producers/ProducerLoginPage'
 import RemarkedTitlePage from '../pages/staffpages/RemarkedTitlePage'
 import OMRemarkedTitlePage from '../pages/O&M/OMRemarkedTitlePage'
 import ECRemarkedTitlePage from '../pages/ECMember/ECRemarkedTitlePage'
+import MembershipFormPage from '../pages/User/MembershipFormPage'
 
 
 function CustomRouter() {
@@ -57,6 +58,10 @@ function CustomRouter() {
               <Route path='/ecdashboard' element={<ECDashboard/>}/>
               <Route path='/ecregistrationdetails' element={<ECRegistrationViewDetails/>}/>
               <Route path='/ecremarkedtitles' element={<ECRemarkedTitlePage/>}/>
+
+
+              {/* USER */}
+              <Route path='/membershipform' element={<MembershipFormPage/>}/>
 
 
 
