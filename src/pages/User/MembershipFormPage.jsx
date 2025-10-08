@@ -7,7 +7,7 @@ function MembershipFormPage() {
     <div className='flex h-screen'>
         <Nav/>
         <div className='flex-1 overflow-y-auto'>
-            <MemberShipForm/>
+          <MemberShipForm/>
         </div>
     </div>
   )

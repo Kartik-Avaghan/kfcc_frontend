@@ -1,4 +1,14 @@
 import React, { useState } from "react";
+import {
+  User,
+  Calendar,
+  MapPin,
+  Image as ImageIcon,
+  Phone,
+  Mail,
+  Layers,
+  Building, 
+} from "lucide-react";
 
 const MembershipForm = () => {
   const today = new Date();
@@ -23,9 +33,7 @@ const MembershipForm = () => {
       proprietorESignature: null,
     },
     partners: [],
-    nominee: [
-      { nomineeName: "", nomineeEmail: "", nomineeRelationship: "" },
-    ],
+    nominee: [{ nomineeName: "", nomineeEmail: "", nomineeRelationship: "" }],
     proposer: [
       {
         proposerReferenceId: "",
@@ -165,86 +173,120 @@ const MembershipForm = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-8 bg-white shadow-md rounded-lg space-y-6">
-      <h2 className="text-2xl font-bold text-center">
-        ಸದಸ್ಯತ್ವದ ಅರ್ಜಿಯೊಂದಿಗೆ ಲಗತ್ತಿಸಬೇಕದ ವಿವರಗಳು
-      </h2>
-      <h2 className="text-xl font-semibold text-center mb-8">
-        ANNEXURE TO APPLICATION FORM FOR MEMBERSHIP
-      </h2>
+    <div className="max-w-6xl mx-auto p-8 bg-white  rounded-lg space-y-6">
+      <div className="text-center space-y-2">
+        <h2 className="text-3xl font-bold text-blue-900">
+          ಸದಸ್ಯತ್ವದ ಅರ್ಜಿಯೊಂದಿಗೆ ಲಗತ್ತಿಸಬೇಕದ ವಿವರಗಳು
+        </h2>
+        <h3 className="text-lg font-semibold text-gray-700">
+          ANNEXURE TO APPLICATION FORM FOR MEMBERSHIP
+        </h3>
+      </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Applicant Details */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 rounded-xl">
+          {/* Applicant Name */}
           <div>
-            <label className="block font-semibold">
-              ಸದಸ್ಯತ್ವದ ರಿಜಿಸ್ಟರ್‌ನಲ್ಲಿ ನಮೂದಿಸಬೇಕಾದ ಅರ್ಜಿದಾರರ ಅಥವಾ ಸಂಸ್ಥೆಯ ಹೆಸರು / Name of Applicant
+            <label className=" font-semibold text-gray-800 mb-1 flex items-center gap-2">
+              <User className="w-4 h-4 text-blue-700" />
+              ಸದಸ್ಯತ್ವದ ರಿಜಿಸ್ಟರ್‌ನಲ್ಲಿ ನಮೂದಿಸಬೇಕಾದ ಅರ್ಜಿದಾರರ ಅಥವಾ ಸಂಸ್ಥೆಯ ಹೆಸರು
+              / Name of Applicant
             </label>
             <input
               type="text"
               name="applicantName"
               value={formData.applicantName}
               onChange={handleInputChange}
-              className="w-full border rounded px-3 py-2"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 transition"
             />
           </div>
+
+          {/* Date */}
           <div>
-            <label className="block font-semibold">ದಿನಾಂಕ / Date</label>
+            <label className=" font-semibold text-gray-800 mb-1 flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-blue-700" />
+              ದಿನಾಂಕ / Date
+            </label>
             <input
               type="text"
               value={formData.date}
               readOnly
-              className="w-full border rounded px-3 py-2 bg-gray-100 cursor-not-allowed"
+              className="w-full border border-gray-200 rounded-lg px-3 py-2 bg-gray-100 text-gray-600 cursor-not-allowed"
             />
           </div>
+
+          {/* Address */}
           <div>
-            <label className="block font-semibold">
-              ಸದಸ್ಯತ್ವದ ರಿಜಿಸ್ಟರ್‌ನಲ್ಲಿ ನಮೂದಿಸಬೇಕಾದ ಅರ್ಜಿದಾರರ ಅಥವಾ ಸಂಸ್ಥೆಯ ವಿಳಾಸ / Address
+            <label className=" font-semibold text-gray-800 mb-1 flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-blue-700" />
+              ಸದಸ್ಯತ್ವದ ರಿಜಿಸ್ಟರ್‌ನಲ್ಲಿ ನಮೂದಿಸಬೇಕಾದ ಅರ್ಜಿದಾರರ ಅಥವಾ ಸಂಸ್ಥೆಯ ವಿಳಾಸ
+              / Address
             </label>
             <input
               type="text"
               name="applicantAddress"
               value={formData.applicantAddress}
               onChange={handleInputChange}
-              className="w-full border rounded px-3 py-2"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
             />
           </div>
+
+          {/* Image */}
           <div>
-            <label className="block font-semibold">ಚಿತ್ರ / Image</label>
+            <label className="block font-semibold text-gray-800 mb-1 flex items-center gap-2">
+              <ImageIcon className="w-4 h-4 text-blue-700" />
+              ಚಿತ್ರ / Image
+            </label>
             <input
               type="file"
               name="applicantImage"
               onChange={handleInputChange}
-              className="w-full border rounded px-3 py-2"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700 transition file:text-sm"
             />
           </div>
+
+          {/* Phone Number */}
           <div>
-            <label className="block font-semibold">ದೂರವಾಣಿ ಸಂಖ್ಯೆ / Telephone No.</label>
+            <label className="block font-semibold text-gray-800 mb-1 flex items-center gap-2">
+              <Phone className="w-4 h-4 text-blue-700" />
+              ದೂರವಾಣಿ ಸಂಖ್ಯೆ / Telephone No.
+            </label>
             <input
               type="text"
               name="applicantPhNo"
               value={formData.applicantPhNo}
               onChange={handleInputChange}
-              className="w-full border rounded px-3 py-2"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
             />
           </div>
+
+          {/* Email */}
           <div>
-            <label className="block font-semibold">ಇ-ಮೇಲ್ ಐಡಿ / E-mail ID</label>
+            <label className="block font-semibold text-gray-800 mb-1 flex items-center gap-2">
+              <Mail className="w-4 h-4 text-blue-700" />
+              ಇ-ಮೇಲ್ ಐಡಿ / E-mail ID
+            </label>
             <input
               type="email"
               name="applicantEmail"
               value={formData.applicantEmail}
               onChange={handleInputChange}
-              className="w-full border rounded px-3 py-2"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
             />
           </div>
+
+          {/* Membership Category */}
           <div>
-            <label className="block font-semibold">ಕೋರಿರುವ ಸದಸ್ಯತ್ವದ ವರ್ಗ / Membership Category</label>
+            <label className="block font-semibold text-gray-800 mb-1 flex items-center gap-2">
+              <Layers className="w-4 h-4 text-blue-700" />
+              ಕೋರಿರುವ ಸದಸ್ಯತ್ವದ ವರ್ಗ / Membership Category
+            </label>
             <select
               name="applicantMembershipCategory"
               value={formData.applicantMembershipCategory}
               onChange={handleInputChange}
-              className="w-full border rounded px-3 py-2"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
             >
               <option value="">Select</option>
               <option value="Producer">Producer</option>
@@ -256,15 +298,18 @@ const MembershipForm = () => {
               <option value="TemporaryMember">Temporary Member</option>
             </select>
           </div>
+
+          {/* Ownership Type */}
           <div>
-            <label className="block font-semibold">
+            <label className="block font-semibold text-gray-800 mb-1 flex items-center gap-2">
+              <Building className="w-4 h-4 text-blue-700" />
               ಮಾಲೀಕತ್ವವೇ / Ownership Type
             </label>
             <select
               name="applicantOwnershipType"
               value={formData.applicantOwnershipType}
               onChange={handleInputChange}
-              className="w-full border rounded px-3 py-2"
+              className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
             >
               <option value="">Select</option>
               <option value="Proprietor">Proprietor</option>
@@ -361,7 +406,9 @@ const MembershipForm = () => {
                   <input
                     type={key === "nomineeEmail" ? "email" : "text"}
                     value={nom[key]}
-                    onChange={(e) => handleNomineeChange(idx, key, e.target.value)}
+                    onChange={(e) =>
+                      handleNomineeChange(idx, key, e.target.value)
+                    }
                     className="w-full border rounded px-3 py-2"
                   />
                 </div>
@@ -398,7 +445,9 @@ const MembershipForm = () => {
                   <input
                     type={key === "proposerDate" ? "date" : "text"}
                     value={prop[key]}
-                    onChange={(e) => handleProposerChange(idx, key, e.target.value)}
+                    onChange={(e) =>
+                      handleProposerChange(idx, key, e.target.value)
+                    }
                     className="w-full border rounded px-3 py-2"
                   />
                 </div>
@@ -429,7 +478,9 @@ const MembershipForm = () => {
             <input
               type="checkbox"
               checked={formData.membershipFee}
-              onChange={(e) => handleCheckboxChange("membershipFee", e.target.checked)}
+              onChange={(e) =>
+                handleCheckboxChange("membershipFee", e.target.checked)
+              }
               className="form-checkbox"
             />
             <span>Membership form application fee ₹50,000 + GST = ₹59,000</span>
@@ -439,13 +490,17 @@ const MembershipForm = () => {
             <input
               type="checkbox"
               checked={formData.kalyanNidhi}
-              onChange={(e) => handleCheckboxChange("kalyanNidhi", e.target.checked)}
+              onChange={(e) =>
+                handleCheckboxChange("kalyanNidhi", e.target.checked)
+              }
               className="form-checkbox"
             />
             <span>Apply for Kalyan Nidhi ₹22,500</span>
           </label>
 
-          <div className="font-semibold">Total: ₹{formData.totalAmountToPay}</div>
+          <div className="font-semibold">
+            Total: ₹{formData.totalAmountToPay}
+          </div>
         </div>
 
         {/* Terms & Submit */}
@@ -457,7 +512,15 @@ const MembershipForm = () => {
             className="form-checkbox"
           />
           <span>
-            ನಾನು/ನಾವು ನೀಡಿರುವ <a href="www.grow.com" target="_blank" className="text-blue-600 underline">ನೀತಿ, ನಿಯಮಗಳನ್ನು</a> ಓದಿ ಒಪ್ಪಿಕೊಂಡಿರುತ್ತೇನೆ
+            ನಾನು/ನಾವು ನೀಡಿರುವ{" "}
+            <a
+              href="www.grow.com"
+              target="_blank"
+              className="text-blue-600 underline"
+            >
+              ನೀತಿ, ನಿಯಮಗಳನ್ನು
+            </a>{" "}
+            ಓದಿ ಒಪ್ಪಿಕೊಂಡಿರುತ್ತೇನೆ
           </span>
         </label>
 
@@ -478,19 +541,6 @@ const MembershipForm = () => {
 };
 
 export default MembershipForm;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React from 'react'
 
