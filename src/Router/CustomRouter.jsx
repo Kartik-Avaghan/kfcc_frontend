@@ -6,16 +6,18 @@ import TitleRegistrationPage from "../pages/Producers/TitleRegistrationPage";
 import DashBoardPage from "../pages/staffpages/DashBoardPage";
 import RegisterViewDetailsPage from "../pages/staffpages/RegisterViewDetailsPage";
 
-import OMDashboard from "../pages/O&M/OMDashboard";
-import OMRegistrationViewDetails from "../pages/O&M/OMRegistrationViewDetails";
-import ProducerDashboard from "../pages/Producers/ProducerDashboard";
-import ProducerRegistrationViewDetails from "../pages/Producers/ProducerRegistrationViewDetails";
-import ECDashboard from "../pages/ECMember/ECDashboard";
-import ECRegistrationViewDetails from "../pages/ECMember/ECRegistrationViewDetails";
-import ProducerLoginPage from "../pages/Producers/ProducerLoginPage";
-import RemarkedTitlePage from "../pages/staffpages/RemarkedTitlePage";
-import OMRemarkedTitlePage from "../pages/O&M/OMRemarkedTitlePage";
-import ECRemarkedTitlePage from "../pages/ECMember/ECRemarkedTitlePage";
+import OMDashboard from '../pages/O&M/OMDashboard'
+import OMRegistrationViewDetails from '../pages/O&M/OMRegistrationViewDetails'
+import ProducerDashboard from '../pages/Producers/ProducerDashboard'
+import ProducerRegistrationViewDetails from '../pages/Producers/ProducerRegistrationViewDetails'
+import ECDashboard from '../pages/ECMember/ECDashboard'
+import ECRegistrationViewDetails from '../pages/ECMember/ECRegistrationViewDetails'
+import ProducerLoginPage from '../pages/Producers/ProducerLoginPage'
+import RemarkedTitlePage from '../pages/staffpages/RemarkedTitlePage'
+import OMRemarkedTitlePage from '../pages/O&M/OMRemarkedTitlePage'
+import ECRemarkedTitlePage from '../pages/ECMember/ECRemarkedTitlePage'
+import MembershipFormPage from '../pages/User/MembershipFormPage'
+
 
 function CustomRouter() {
   return (
@@ -47,14 +49,14 @@ function CustomRouter() {
         />
         <Route path="/titleregistration" element={<TitleRegistrationPage />} />
 
-        {/* RC Members */}
-        <Route path="/ecdashboard" element={<ECDashboard />} />
-        <Route
-          path="/ecregistrationdetails"
-          element={<ECRegistrationViewDetails />}
-        />
-        <Route path="/ecremarkedtitles" element={<ECRemarkedTitlePage />} />
-      </Routes>
+              {/* RC Members */}
+              <Route path='/ecdashboard' element={<ECDashboard/>}/>
+              <Route path='/ecregistrationdetails' element={<ECRegistrationViewDetails/>}/>
+              <Route path='/ecremarkedtitles' element={<ECRemarkedTitlePage/>}/>
+
+
+
+        </Routes>
     </div>
   );
 }
