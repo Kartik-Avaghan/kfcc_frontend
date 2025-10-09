@@ -16,8 +16,10 @@ import ProducerLoginPage from "../pages/Producers/ProducerLoginPage";
 import RemarkedTitlePage from "../pages/staffpages/RemarkedTitlePage";
 import OMRemarkedTitlePage from "../pages/O&M/OMRemarkedTitlePage";
 import ECRemarkedTitlePage from "../pages/ECMember/ECRemarkedTitlePage";
-import MembershipFormPage from "../pages/User/MembershipFormPage";
+import Membership from "../pages/User/Membership";
 import UserLogin from "../pages/User/UserLogin";
+import UsersAuth from "./Auth/UsersAuth";
+import MembershipForm from "../components/User/MemberShipForm";
 
 function CustomRouter() {
   return (
@@ -55,7 +57,11 @@ function CustomRouter() {
         {/* User */}
         <Route path="/login" element={<UserLogin/>} />
         
-        <Route path="/user/membership" element={<MembershipFormPage />} />
+        <Route path= "/user" element={<UsersAuth/>} > 
+          <Route path="membership" element={<Membership />} />
+          <Route path="membership/apply" element={<MembershipForm />} />
+        </Route>
+        
       </Routes>
     </div>
   );

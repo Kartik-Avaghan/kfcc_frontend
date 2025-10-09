@@ -1,16 +1,16 @@
-import React from 'react'
-import MemberShipForm from '../../components/User/MemberShipForm'
+import { Outlet } from 'react-router-dom'
 import Nav from '../../components/User/Nav'
 
-function MembershipFormPage() {
+function UsersAuth() {
+
   return (
     <div className='flex h-screen'>
         <Nav/>
         <div className='flex-1 overflow-y-auto'>
-          <MemberShipForm/>
+            <Outlet/>
         </div>
     </div>
   )
 }
 
-export default MembershipFormPage
+export default UsersAuth

@@ -15,7 +15,7 @@ function Nav() {
     //   active: false
     // },
     {
-      name: "Membership Form",
+      name: "Membership",
       icon: FileText,
       href: "/user/membership",
       active: false,
@@ -29,9 +29,9 @@ function Nav() {
   ];
 
   return (
-    <div className="flex h-screen">
+    <div className="h-screen top-0 left-0 z-3">
       {/* Sidebar */}
-      <div className="w-72 bg-gradient-to-b from-blue-950 via-blue-900 to-blue-950 text-white flex flex-col shadow-2xl">
+      <div className="w-72 h-screen bg-gradient-to-b from-blue-950 via-blue-900 to-blue-950 text-white flex flex-col shadow-2xl">
         {/* Header */}
         <div className="p-6 border-b border-blue-800">
           <div className="flex items-center space-x-3 mb-2">
@@ -40,7 +40,6 @@ function Nav() {
               <img
                 src={logo}
                 alt="KFCC logo"
-                srcset=""
                 className="size-14 rounded-full"
               />
             </div>

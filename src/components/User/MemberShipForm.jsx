@@ -10,6 +10,7 @@ import {
   Building,
   Droplet,
   Info,
+  CheckSquare, Wallet, IndianRupee, PlusCircle
 } from "lucide-react";
 
 const MembershipForm = () => {
@@ -47,7 +48,7 @@ const MembershipForm = () => {
     nominee: [{ nomineeName: "", nomineeEmail: "", nomineeRelationship: "" }],
     proposer: [
       {
-        proposerReferenceId: "",
+        proposerMembershipId: "",
         proposerDate: today.toISOString().split("T")[0],
         proposerName: "",
         proposerAddress: "",
@@ -57,7 +58,7 @@ const MembershipForm = () => {
     ],
     membershipFee: false,
     kalyanNidhi: false,
-    totalAmountToPay: 0,
+    totalAmountToPay: 59000,
   });
 
   const [termsChecked, setTermsChecked] = useState(false);
@@ -116,7 +117,6 @@ const MembershipForm = () => {
   const handleCheckboxChange = (key, value) => {
     setFormData((prev) => {
       let total = prev.totalAmountToPay;
-      if (key === "membershipFee") total = value ? 59000 : total - 59000;
       if (key === "kalyanNidhi") total = value ? total + 22500 : total - 22500;
       return { ...prev, [key]: value, totalAmountToPay: total };
     });
@@ -200,7 +200,7 @@ const MembershipForm = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-8 bg-white  rounded-lg space-y-6">
+    <div className="max-w-6xl mx-auto p-8 bg-white rounded-lg space-y-6">
       <div className="text-center space-y-2">
         <h2 className="text-3xl font-bold text-blue-900 mb-2">
           ಸದಸ್ಯತ್ವದ ಅರ್ಜಿಯೊಂದಿಗೆ ಲಗತ್ತಿಸಬೇಕದ ವಿವರಗಳು
@@ -341,7 +341,7 @@ const MembershipForm = () => {
           </div>
 
           {/* Phone Number */}
-          <div>
+          {/* <div>
             <label className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
               <Phone className="w-4 h-4 text-blue-700" />
               ದೂರವಾಣಿ ಸಂಖ್ಯೆ / Mobile No.
@@ -356,7 +356,7 @@ const MembershipForm = () => {
             />
           </div>
 
-          {/* Email */}
+     
           <div>
             <label className=" font-semibold text-gray-800 mb-1 flex items-center gap-2">
               <Mail className="w-4 h-4 text-blue-700" />
@@ -370,7 +370,7 @@ const MembershipForm = () => {
               onChange={handleInputChange}
               className="w-full border border-gray-300 rounded-lg px-3 py-2  transition"
             />
-          </div>
+          </div> */}
 
           {/* Membership Category */}
           <div>
@@ -633,20 +633,20 @@ const MembershipForm = () => {
                   ))}
                 </div>
                 {formData.partners.length > 1 && (
-                    <button
-                      type="button"
-                      onClick={() => removePartner(idx)}
-                      className="text-red-600 underline"
-                    >
-                      Remove Partner
-                    </button>
-                  )}
+                  <button
+                    type="button"
+                    onClick={() => removePartner(idx)}
+                    className="text-red-600 underline cursor-pointer"
+                  >
+                    Remove Partner
+                  </button>
+                )}
               </div>
             ))}
             <button
               type="button"
               onClick={addPartner}
-              className="bg-blue-500 text-white px-3 py-2 rounded"
+              className="bg-blue-500 text-white px-3 py-2 rounded cursor-pointer"
             >
               Add Partner
             </button>
@@ -654,111 +654,134 @@ const MembershipForm = () => {
         )}
 
         {/* Nominee Form */}
-        <div className="border p-4 rounded space-y-3 bg-gray-50">
-          <h3 className="font-semibold">Nominee Details</h3>
-          {formData.nominee.map((nom, idx) => (
-            <div key={idx} className="border p-2 rounded space-y-2">
-              <h4>Nominee {idx + 1}</h4>
-              {Object.keys(nom).map((key) => (
-                <div key={key}>
-                  <label className="block font-medium">{key}</label>
-                  <input
-                    type={key === "nomineeEmail" ? "email" : "text"}
-                    value={nom[key]}
-                    onChange={(e) =>
-                      handleNomineeChange(idx, key, e.target.value)
-                    }
-                    className="w-full border rounded px-3 py-2"
-                  />
-                </div>
-              ))}
-              {idx > 0 && (
-                <button
-                  type="button"
-                  onClick={() => removeNominee(idx)}
-                  className="text-red-600 underline"
-                >
-                  Remove Nominee
-                </button>
-              )}
-            </div>
-          ))}
-          <button
-            type="button"
-            onClick={addNominee}
-            className="bg-blue-500 text-white px-3 py-2 rounded"
-          >
-            Add Nominee
-          </button>
+        <div className=" p-4 space-y-1">
+          <div className="flex items-end gap-2">
+            <h3 className="font-semibold text-xl">Nominee Details</h3>
+            <p>( You can add up to 2 nominees. )</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {formData.nominee.map((nom, idx) => (
+              <div key={idx} className="space-y-2">
+                <h4>Nominee {idx + 1}</h4>
+                {Object.keys(nom).map((key) => (
+                  <div key={key}>
+                    <label className="block font-medium">{key}</label>
+                    <input
+                      type={key === "nomineeEmail" ? "email" : "text"}
+                      value={nom[key]}
+                      onChange={(e) =>
+                        handleNomineeChange(idx, key, e.target.value)
+                      }
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2"
+                    />
+                  </div>
+                ))}
+                {idx > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => removeNominee(idx)}
+                    className="text-white p-2 rounded-md cursor-pointer bg-red-500"
+                  >
+                    Remove Nominee
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+          {formData.nominee.length < 2 && (
+            <button
+              type="button"
+              onClick={addNominee}
+              className="bg-blue-600 text-white px-3 py-2 rounded-lg cursor-pointer mt-2"
+            >
+              Add Nominee
+            </button>
+          )}
         </div>
 
         {/* Proposer Form */}
-        <div className="border p-4 rounded space-y-3 bg-gray-50">
+        <div className=" p-4  space-y-3">
           <h3 className="font-semibold">Proposer Details</h3>
-          {formData.proposer.map((prop, idx) => (
-            <div key={idx} className="border p-2 rounded space-y-2">
-              <h4>Proposer {idx + 1}</h4>
-              {Object.keys(prop).map((key) => (
-                <div key={key}>
-                  <label className="block font-medium">{key}</label>
-                  <input
-                    type={key === "proposerDate" ? "date" : "text"}
-                    value={prop[key]}
-                    onChange={(e) =>
-                      handleProposerChange(idx, key, e.target.value)
-                    }
-                    className="w-full border rounded px-3 py-2"
-                  />
-                </div>
-              ))}
-              {formData.proposer.length > 1 && (
-                <button
-                  type="button"
-                  onClick={() => removeProposer(idx)}
-                  className="text-red-600 underline"
-                >
-                  Remove Proposer
-                </button>
-              )}
-            </div>
-          ))}
-          <button
-            type="button"
-            onClick={addProposer}
-            className="bg-blue-500 text-white px-3 py-2 rounded"
-          >
-            Add Proposer
-          </button>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {formData.proposer.map((prop, idx) => (
+              <div key={idx} className=" p-2 space-y-2">
+                <h4>Proposer {idx + 1}</h4>
+                {Object.keys(prop).map((key) => (
+                  <div key={key}>
+                    <label className="block font-medium mb-2">{key}</label>
+                    <input
+                      type={key === "proposerDate" ? "date" : "text"}
+                      value={prop[key]}
+                      onChange={(e) =>
+                        handleProposerChange(idx, key, e.target.value)
+                      }
+                      className="w-full border border-gray-300 rounded px-3 py-2"
+                    />
+                  </div>
+                ))}
+                {formData.proposer.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => removeProposer(idx)}
+                    className="text-white bg-red-500 px-3 py-2 rounded-md mt-1 cursor-pointer"
+                  >
+                    Remove Proposer
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+          {formData.proposer.length < 2 && (
+            <button
+              type="button"
+              onClick={addProposer}
+              className="bg-blue-500 text-white px-3 py-2 rounded"
+            >
+              Add Proposer
+            </button>
+          )}
         </div>
 
         {/* Fees */}
-        <div className="border p-4 rounded space-y-2 bg-gray-100">
-          <label className="inline-flex items-center space-x-2">
-            <input
-              type="checkbox"
-              checked={formData.membershipFee}
-              onChange={(e) =>
-                handleCheckboxChange("membershipFee", e.target.checked)
-              }
-              className="form-checkbox"
-            />
-            <span>Membership form application fee ₹50,000 + GST = ₹59,000</span>
-          </label>
+        <div className="border border-gray-200 p-6 rounded-xl space-y-4 bg-gradient-to-bl from-blue-50 via-white to-blue-100 shadow-md transition-all hover:shadow-lg  duration-200">
+          {/* Membership Fee Section */}
+          <div className="flex items-center gap-3 text-blue-900">
+            <Wallet className="w-5 h-5 text-blue-700" />
+            <label className="text-lg font-medium">
+              Membership Form Application Fee
+              <span className="block text-gray-600 text-base mt-0.5">
+                ₹50,000 + GST ={" "}
+                <span className="font-semibold text-blue-900">₹59,000</span>
+              </span>
+            </label>
+          </div>
 
-          <label className="inline-flex items-center space-x-2">
+          {/* Kalyan Nidhi Checkbox */}
+          <label className="flex items-center gap-3 text-lg cursor-pointer hover:text-blue-700 transition-colors">
             <input
               type="checkbox"
               checked={formData.kalyanNidhi}
               onChange={(e) =>
                 handleCheckboxChange("kalyanNidhi", e.target.checked)
               }
-              className="form-checkbox"
+              className="w-4.5 h-4.5 accent-blue-700 cursor-pointer"
             />
-            <span>Apply for Kalyan Nidhi ₹22,500</span>
+           
+            <span>
+              Apply for <span className="font-semibold">Kalyan Nidhi</span>{" "}
+              <span className="font-semibold text-blue-900 ml-1">₹22,500</span>
+            </span>
           </label>
 
-          <div className="font-semibold">
-            Total: ₹{formData.totalAmountToPay}
+          {/* Total Display */}
+          <div className="flex items-center justify-between mt-4 border-t pt-3">
+            <span className="font-semibold text-xl text-gray-800 flex items-center gap-2">
+              <IndianRupee className="w-5 h-5 text-blue-700 mt-1" />
+              Total:
+            </span>
+            <span className="font-bold text-2xl text-blue-700">
+              ₹{formData.totalAmountToPay.toLocaleString("en-IN")}
+            </span>
           </div>
         </div>
 
@@ -768,26 +791,26 @@ const MembershipForm = () => {
             type="checkbox"
             checked={termsChecked}
             onChange={(e) => setTermsChecked(e.target.checked)}
-            className="form-checkbox"
+            className="form-checkbox w-4 h-4"
           />
           <span>
             ನಾನು/ನಾವು ನೀಡಿರುವ{" "}
             <a
-              href="www.grow.com"
+              href=""
               target="_blank"
               className="text-blue-600 underline"
             >
               ನೀತಿ, ನಿಯಮಗಳನ್ನು
             </a>{" "}
-            ಓದಿ ಒಪ್ಪಿಕೊಂಡಿರುತ್ತೇನೆ
+            ಓದಿ ಒಪ್ಪಿಕೊಂಡಿರುತ್ತೇನೆ / I have read and agree to the Terms and Conditions
           </span>
         </label>
 
         <button
           type="submit"
-          disabled={!termsChecked || !formData.membershipFee}
-          className={`w-full py-3 rounded text-white font-semibold ${
-            termsChecked && formData.membershipFee
+          disabled={!termsChecked}
+          className={`w-full py-3 rounded text-white font-semibold cursor-pointer ${
+            termsChecked
               ? "bg-blue-500 hover:bg-blue-600"
               : "bg-gray-400 cursor-not-allowed"
           }`}
