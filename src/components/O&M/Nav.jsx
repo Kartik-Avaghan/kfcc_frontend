@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { Film, FileText, Globe, LogOut, ChevronRight, User, Settings ,MessageSquare} from 'lucide-react';
+import logo from '../../assets/logo.jpeg'
 
 function Nav() {
   const [activeItem, setActiveItem] = useState('Title Registration');
@@ -12,18 +13,18 @@ function Nav() {
       href: '/o&mdashboard',
       active: true
     },
-    {
-      name: 'Remarked Titles',
-      icon: MessageSquare,
-      href: '/o&mremarkedtitles',
-      active: false
-    },
-    {
-      name: 'Public Clearance',
-      icon: Globe,
-      href: '/publication',
-      active: false
-    }
+    // {
+    //   name: 'Remarked Titles',
+    //   icon: MessageSquare,
+    //   href: '/o&mremarkedtitles',
+    //   active: false
+    // },
+    // {
+    //   name: 'Public Clearance',
+    //   icon: Globe,
+    //   href: '/publication',
+    //   active: false
+    // }
   ];
 
   return (
@@ -33,8 +34,8 @@ function Nav() {
         {/* Header */}
         <div className="p-6 border-b border-blue-800">
           <div className="flex items-center space-x-3 mb-2">
-            <div className="p-2 bg-white bg-opacity-10 rounded-lg backdrop-blur-sm">
-              <Film className="w-6 h-6 text-black" />
+            <div className="bg-opacity-10 rounded-lg backdrop-blur-sm">
+               <img src={logo} alt="KFCC logo" srcset="" className="size-16 rounded-full" />
             </div>
             <div>
               <h1 className="text-2xl font-bold tracking-wide">KFCC</h1>

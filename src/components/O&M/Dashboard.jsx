@@ -31,7 +31,7 @@ function DashBoard() {
     <div className="flex justify-center items-center  p-10">
       <div className="flex flex-col justify-center items-center w-full">
         <h1 className="text-2xl text-blue-950 font-semibold">
-          All Registered Details
+          Todays Title Registrations
         </h1>
 
         {/* Grid of Cards */}
