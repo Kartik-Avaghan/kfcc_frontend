@@ -24,6 +24,8 @@ import MembershipForm from "../components/User/MemberShipForm";
 import LeaderDashboard from "../pages/O&MLeaderPage/LeaderDashboard";
 import KFCCMemberList from "../pages/O&MLeaderPage/KFCCMemberList";
 import PublicityClearance from "../pages/Producers/PublicityClearance";
+import FilmReleaseForm from "../components/Producer/FilmReleaseForm";
+import Filmrelesedetails from "../pages/Producers/Filmrelesedetails";
 
 function CustomRouter() {
   return (
@@ -54,6 +56,8 @@ function CustomRouter() {
         <Route path="/titleregistration" element={<TitleRegistrationPage />} />
 
         <Route path="/publicityclearance" element={<PublicityClearance />} />
+        <Route path="/applyhcategory" element={<Filmrelesedetails/>} />
+
 
 
 
