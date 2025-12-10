@@ -1,37 +1,37 @@
 
 import { useState } from "react";
-import { Film, MessageSquare, FileText, Globe, LogOut, ChevronRight, User, Settings } from 'lucide-react';
+import { Film, FileText, Globe, LogOut, ChevronRight, User, Settings ,MessageSquare} from 'lucide-react';
 import logo from '../../assets/logo.jpeg'
 
 function Nav() {
   const [activeItem, setActiveItem] = useState('Title Registration');
 
   const menuItems = [
-    //  {
-    //   name: 'Membership',
-    //   icon: FileText,
-    //   href: '/staffdashboard',
-    //   active: true
-    // },
-    {
-      name: 'Title Registration',
+
+     {
+      name: 'Dashboard',
       icon: FileText,
-      href: '/staffdashboard',
+      href: '/o&m/leaderdashboard',
       active: true
     },
     {
-      name: 'Remarked Titles',
-      icon: MessageSquare,
-      href: '/staffremarkedtitles',
-      active: false
+      name: 'Members',
+      icon: User,
+      href: '/kfccmembers',
+      active: true
     },
-    {
-      name: 'Public Clearance',
-      icon: Globe,
-      href: '/publication',
-      active: false
-    }
-      
+    // {
+    //   name: 'Voting Results',
+    //   icon: MessageSquare,
+    //   href: '/o&mremarkedtitles',
+    //   active: false
+    // },
+    // {
+    //   name: 'Public Clearance',
+    //   icon: Globe,
+    //   href: '/publication',
+    //   active: false
+    // }
   ];
 
   return (
@@ -41,8 +41,7 @@ function Nav() {
         {/* Header */}
         <div className="p-6 border-b border-blue-800">
           <div className="flex items-center space-x-3 mb-2">
-            <div className="">
-              {/* <Film className="w-6 h-6 text-black" /> */}
+            <div className="p-2 bg-white bg-opacity-10 rounded-lg backdrop-blur-sm">
               <img src={logo} alt="KFCC logo" srcset="" className="size-16 rounded-full" />
             </div>
             <div>
@@ -59,8 +58,8 @@ function Nav() {
               <User className="w-5 h-5" />
             </div>
             <div>
-              <p className="font-medium">Staff User</p>
-              <p className="text-xs text-blue-200">Staff</p>
+              <p className="font-medium">O&M President</p>
+              <p className="text-xs text-blue-200">President</p>
             </div>
           </div>
         </div>
@@ -124,3 +123,20 @@ function Nav() {
 };
 
 export default Nav;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

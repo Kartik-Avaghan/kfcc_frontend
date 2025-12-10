@@ -21,6 +21,9 @@ import UserLogin from "../pages/User/UserLogin";
 import UsersAuth from "./Auth/UsersAuth";
 import MembershipForm from "../components/User/MemberShipForm";
 
+import LeaderDashboard from "../pages/O&MLeaderPage/LeaderDashboard";
+import KFCCMemberList from "../pages/O&MLeaderPage/KFCCMemberList";
+
 function CustomRouter() {
   return (
     <div>
@@ -39,6 +42,9 @@ function CustomRouter() {
         <Route path="/o&mdashboard" element={<OMDashboard />} />
         <Route path="/o&mregistrationdetails" element={<OMRegistrationViewDetails />} />
         <Route path="/o&mremarkedtitles" element={<OMRemarkedTitlePage />} />
+
+        <Route path="/o&m/leaderdashboard" element={<LeaderDashboard />} />
+        <Route path="/kfccmembers" element={<KFCCMemberList />} />
 
         {/* Producer */}
         <Route path="/producerlogin" element={<ProducerLoginPage />} />
@@ -61,6 +67,8 @@ function CustomRouter() {
           <Route path="membership" element={<Membership />} />
           <Route path="membership/apply" element={<MembershipForm />} />
         </Route>
+
+
         
       </Routes>
     </div>

@@ -19,9 +19,15 @@ function Nav() {
       active: false
     },
     {
-      name: 'Public Clearance',
+      name: 'Publicity Clearance',
       icon: Globe,
       href: '/publication',
+      active: false
+    },
+    {
+      name: 'Apply for H category',
+      icon: FileText,
+      href: '/applyhcategory',
       active: false
     }
   ];
