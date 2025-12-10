@@ -41,7 +41,7 @@ function Nav() {
         {/* Header */}
         <div className="p-6 border-b border-blue-800">
           <div className="flex items-center space-x-3 mb-2">
-            <div className="p-2 bg-white bg-opacity-10 rounded-lg backdrop-blur-sm">
+            <div className=" bg-opacity-10 rounded-lg backdrop-blur-sm">
               <img src={logo} alt="KFCC logo" srcset="" className="size-16 rounded-full" />
             </div>
             <div>
