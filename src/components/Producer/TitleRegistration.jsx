@@ -1,5 +1,6 @@
+import { Languages, LanguagesIcon } from "lucide-react";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function TitleRegistration() {
   const [formData, setFormData] = useState({
@@ -109,18 +110,23 @@ function TitleRegistration() {
               />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Film Title in Kannada <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="title"
-                placeholder="Enter film title in Kannada"
-                className="w-full border rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-              />
-            
+            <div className="flex w-full items-center gap-3 justify-center">
+              <div className="w-full">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Film Title in Kannada <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Enter film title in Kannada"
+                  className="w-full border rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                />
+              </div>
+              <Link to="https://www.google.com/search?q=english+to+kannada+translation&rlz=1C1ONGR_enIN989IN989&oq=&gs_lcrp=EgZjaHJvbWUqBggBEEUYOzIGCAAQRRg5MgYIARBFGDsyDAgCECMYJxiABBiKBTINCAMQABiDARixAxiABDINCAQQABiDARixAxiABDIHCAUQABiABDINCAYQABiDARixAxiABDIGCAcQRRhB0gEINTk0MWowajeoAgCwAgA&sourceid=chrome&ie=UTF-8" className="text-gray-500 mt-6" target="_"> <LanguagesIcon/> </Link>
+              
+
             </div>
+            
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
