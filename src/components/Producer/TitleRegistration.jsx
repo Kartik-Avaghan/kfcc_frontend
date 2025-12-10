@@ -111,6 +111,19 @@ function TitleRegistration() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
+                Film Title in Kannada <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="title"
+                placeholder="Enter film title in Kannada"
+                className="w-full border rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              />
+            
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Is this your First Film?
               </label>
               <select
