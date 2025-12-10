@@ -7,12 +7,7 @@ function Nav() {
   const [activeItem, setActiveItem] = useState('Title Registration');
 
   const menuItems = [
-    //  {
-    //   name: 'Membership',
-    //   icon: FileText,
-    //   href: '/staffdashboard',
-    //   active: true
-    // },
+
     {
       name: 'Title Registration',
       icon: FileText,
@@ -26,9 +21,9 @@ function Nav() {
       active: false
     },
     {
-      name: 'Public Clearance',
+      name: 'Publicity Clearance',
       icon: Globe,
-      href: '/publication',
+      href: '/publicityclearance',
       active: false
     }
       

@@ -21,7 +21,7 @@ function Nav() {
     {
       name: 'Publicity Clearance',
       icon: Globe,
-      href: '/publication',
+      href: '/publicityclearance',
       active: false
     },
     {

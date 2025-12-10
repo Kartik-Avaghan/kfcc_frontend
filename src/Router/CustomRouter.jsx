@@ -23,6 +23,7 @@ import MembershipForm from "../components/User/MemberShipForm";
 
 import LeaderDashboard from "../pages/O&MLeaderPage/LeaderDashboard";
 import KFCCMemberList from "../pages/O&MLeaderPage/KFCCMemberList";
+import PublicityClearance from "../pages/Producers/PublicityClearance";
 
 function CustomRouter() {
   return (
@@ -51,6 +52,10 @@ function CustomRouter() {
         <Route path="/producerdashboard" element={<ProducerDashboard />} />
         <Route path="/producerregistrationdetails"element={<ProducerRegistrationViewDetails />} />
         <Route path="/titleregistration" element={<TitleRegistrationPage />} />
+
+        <Route path="/publicityclearance" element={<PublicityClearance />} />
+
+
 
         {/* RC Members */}
         <Route path="/ecdashboard" element={<ECDashboard />} />
